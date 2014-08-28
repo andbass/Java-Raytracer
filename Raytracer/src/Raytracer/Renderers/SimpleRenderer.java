@@ -27,7 +27,7 @@ public class SimpleRenderer {
 		this.width = resolution.width;  this.height = resolution.height;
 		this.ratio = (double)width / height;
 		setSamples(samples);
-		
+
 	}
 	
 	/**
