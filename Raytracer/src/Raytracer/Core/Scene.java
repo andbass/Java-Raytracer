@@ -1,4 +1,4 @@
-package Raytracer;
+package Raytracer.Core;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,8 @@ import Raytracer.Math.Vec3;
 public class Scene {
 	private List<Geometry> 	geomList;
 	private List<Light>		lightList;
+	
+	private Color			bgColor;
 	
 	public Scene(){
 		geomList = new ArrayList<Geometry>();
@@ -43,7 +45,7 @@ public class Scene {
 
 		Vec3 hitPoint = result.hitPoint;
 		Geometry hitObj = result.hitObject;
-		Color objDiffuse = hitObj.getDiffuse(hitPoint);
+		Color objDiffuse = hitObj.getMaterial().getDiffuse(hitPoint);
 		
 		Vec3 normal = hitObj.getNormal(hitPoint);
 		
@@ -56,8 +58,10 @@ public class Scene {
 		return pointColor;	
 	}
 	
+	public void setBGColor(Color color) { bgColor = color; }
+	
 	protected Color getBGColor(double x, double y){
-		return Color.OFF_WHITE;
+		return bgColor;
 	}
 	
 	public List<Geometry> getGeometry() {

@@ -9,8 +9,8 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
 
-import Raytracer.Camera;
-import Raytracer.Scene;
+import Raytracer.Core.Camera;
+import Raytracer.Core.Scene;
 import Raytracer.Renderers.SimpleRenderer;
 
 public class JRaytracerViewport extends JComponent {

@@ -1,4 +1,4 @@
-package Raytracer;
+package Raytracer.Core;
 
 import Raytracer.Math.*;
 

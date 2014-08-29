@@ -5,10 +5,10 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 
-import Raytracer.Camera;
-import Raytracer.Ray;
-import Raytracer.RaycastResult;
-import Raytracer.Scene;
+import Raytracer.Core.Camera;
+import Raytracer.Core.Ray;
+import Raytracer.Core.RaycastResult;
+import Raytracer.Core.Scene;
 
 public class SimpleRenderer {
 	private int width, height;

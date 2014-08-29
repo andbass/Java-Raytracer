@@ -1,34 +1,23 @@
 package Raytracer.Geometry;
 
-import Raytracer.Ray;
-import Raytracer.RaycastResult;
-import Raytracer.Math.*;
+import Raytracer.Core.Ray;
+import Raytracer.Core.RaycastResult;
+import Raytracer.Materials.Material;
+import Raytracer.Math.Color;
+import Raytracer.Math.QuadraticEquation;
+import Raytracer.Math.Vec3;
 
 public class Sphere implements Geometry {
 	private Vec3 pos;
 	private double radius, radiusSquared;
 	
-	private double 	ambientMultipler;
+	private Material mat;
 	
-	private Color	ambientIntensity;
-	private Color 	diffuseIntensity;
-	private Color 	specularIntensity;
-	
-	public Sphere(Vec3 pos, double radius, Color diffuse, Color specular){
-		this(pos, radius, diffuse, specular, 0.01);
-	}
-	
-	public Sphere(Vec3 pos, double radius, Color diffuse, Color specular, double ambient){
-		this(pos, radius, diffuse.scale(ambient), diffuse, specular);
-	}
-	
-	public Sphere(Vec3 pos, double radius, Color ambient, Color diffuse, Color specular){
+	public Sphere(Vec3 pos, double radius, Material mat){
 		this.pos = pos;
 		setRadius(radius);
 		
-		this.diffuseIntensity = diffuse;
-		this.specularIntensity = specular;
-		this.ambientIntensity = ambient;
+		this.mat = mat;
 	}
 	
 	public RaycastResult collide(Ray ray) {
@@ -74,16 +63,8 @@ public class Sphere implements Geometry {
 		return point.normalize();
 	}
 	
-	public Color getAmbient(Vec3 point) {
-		return ambientIntensity;
-	}
-	
-	public Color getDiffuse(Vec3 point) {
-		return diffuseIntensity;
-	}
-	
-	public Color getSpecular(Vec3 point) {
-		return specularIntensity;
+	public Material getMaterial(){
+		return mat;
 	}
 }
 	

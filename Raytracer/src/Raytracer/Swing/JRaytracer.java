@@ -1,9 +1,10 @@
 package Raytracer.Swing;
 
-import Raytracer.Camera;
-import Raytracer.Scene;
+import Raytracer.Core.Camera;
+import Raytracer.Core.Scene;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
