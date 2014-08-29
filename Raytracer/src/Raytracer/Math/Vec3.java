@@ -13,7 +13,11 @@ public class Vec3 {
 	public Vec3(double x, double y, double z){
 		this.x = x;  this.y = y;  this.z = z;
 	}
-	
+
+	public void set(double x, double y, double z){
+		this.x = x;  this.y = y;  this.z = z;
+	}
+
 	public Vec3 add(Vec3 vec){
 		return new Vec3(this.x + vec.x, this.y + vec.y, this.z + vec.z);
 	}
@@ -29,10 +33,6 @@ public class Vec3 {
 	public double dot(Vec3 vec){
 		return this.x*vec.x + this.y*vec.y + this.z*vec.z;
 	}
-	
-//	public Vec3 cross(Vec3 vec){
-//		return new Vec3(this.y*vec.z - this.z*vec.y, this.z*vec.x - this.x*vec.z, this.x*vec.y - this.y*vec.x);
-//	}
 	
 	public Vec3 cross(Vec3 vec){
 		return new Vec3(this.z*vec.y - this.y*vec.z, this.x*vec.z - this.z*vec.x, this.y*vec.x - this.x*vec.y);

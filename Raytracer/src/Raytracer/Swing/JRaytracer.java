@@ -1,15 +1,12 @@
 package Raytracer.Swing;
 
-import java.awt.Dimension;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
-import javax.swing.JFrame;
-
 import Raytracer.Camera;
 import Raytracer.Scene;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 
 /**
@@ -101,6 +98,11 @@ public class JRaytracer extends JFrame implements KeyListener {
 			case KeyEvent.VK_ENTER:
 			{
 				if (e.isAltDown()) switchFullscren();
+			}
+
+			case KeyEvent.VK_ESCAPE:
+			{
+				System.exit(0);
 			}
 			
 		}
