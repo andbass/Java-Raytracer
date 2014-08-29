@@ -35,7 +35,7 @@ public class Vec3 {
 	}
 	
 	public Vec3 cross(Vec3 vec){
-		return new Vec3(this.z*vec.y - this.y*vec.z, this.x*vec.z - this.z*vec.x, this.y*vec.x - this.x*vec.y);
+		return new Vec3(this.y*vec.z - this.z*vec.y, this.x*vec.z - this.z*vec.x, this.y*vec.x - this.x*vec.y);
 	}
 	
 	public Vec3 normalize(){

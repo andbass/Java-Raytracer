@@ -32,10 +32,15 @@ public class Scene {
 	}
 
 	public Color getColor(RaycastResult result, double x, double y){
-		Color pointColor = Color.BLACK;
 		if (!result.hit){
 			return getBGColor(x, y);
 		}
+		return getObjectColor(result, x, y);
+	}
+	
+	protected Color getObjectColor(RaycastResult result, double x, double y){
+		Color pointColor = Color.BLACK;
+
 		Vec3 hitPoint = result.hitPoint;
 		Geometry hitObj = result.hitObject;
 		Color objDiffuse = hitObj.getDiffuse(hitPoint);
