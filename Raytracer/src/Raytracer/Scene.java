@@ -11,10 +11,12 @@ import Raytracer.Math.Vec3;
 public class Scene {
 	private List<Geometry> 	geomList;
 	private List<Light>		lightList;
+	private ColorCalculator bgCalc;
 	
 	public Scene(){
 		geomList = new ArrayList<Geometry>();
 		lightList = new ArrayList<Light>();
+		bgCalc = new ColorCalculator();
 	}
 	
 	public RaycastResult raycast(Ray ray){
@@ -30,11 +32,15 @@ public class Scene {
 		}
 		return closestResult;
 	}
-	
+
 	public Color getColor(RaycastResult result){
+		return getColor(result, 0, 0);
+	}
+	
+	public Color getColor(RaycastResult result, double x, double y){
 		Color pointColor = Color.BLACK;
 		if (!result.hit){
-			return pointColor;
+			return bgCalc.shade(x, y);
 		}
 		Vec3 hitPoint = result.hitPoint;
 		Geometry hitObj = result.hitObject;

@@ -46,7 +46,7 @@ public class SimpleRenderer {
 				Ray camRay = cam.getRay(ndcX, ndcY);
 				
 				RaycastResult result = scene.raycast(camRay);
-				Color pixelColor = scene.getColor(result).toAwtColor();
+				Color pixelColor = scene.getColor(result, ndcX, ndcY).toAwtColor();
 				image.setRGB(x, y, pixelColor.getRGB());
 			}
 		}
