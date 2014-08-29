@@ -7,22 +7,14 @@ import Raytracer.Geometry.Geometry;
 import Raytracer.Lights.Light;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec3;
-import Raytracer.Shaders.DefaultBGShader;
-import Raytracer.Shaders.Shader;
 
 public class Scene {
 	private List<Geometry> 	geomList;
 	private List<Light>		lightList;
-	private Shader 			bgShader;
-
-	public Scene(){
-		this(new DefaultBGShader());
-	}
 	
-	public Scene(Shader shader){
+	public Scene(){
 		geomList = new ArrayList<Geometry>();
 		lightList = new ArrayList<Light>();
-		bgShader = shader;
 	}
 	
 	public RaycastResult raycast(Ray ray){
@@ -39,14 +31,10 @@ public class Scene {
 		return closestResult;
 	}
 
-	public Color getColor(RaycastResult result){
-		return getColor(result, 0, 0);
-	}
-	
 	public Color getColor(RaycastResult result, double x, double y){
 		Color pointColor = Color.BLACK;
 		if (!result.hit){
-			return bgShader.shade(this, result, x, y);
+			return getBGColor(x, y);
 		}
 		Vec3 hitPoint = result.hitPoint;
 		Geometry hitObj = result.hitObject;
@@ -61,6 +49,10 @@ public class Scene {
 			pointColor = pointColor.add(scaledDiffuse);
 		}
 		return pointColor;	
+	}
+	
+	protected Color getBGColor(double x, double y){
+		return Color.OFF_WHITE;
 	}
 	
 	public List<Geometry> getGeometry() {
@@ -78,9 +70,4 @@ public class Scene {
 	public void addLight(Light light){
 		lightList.add(light);
 	}
-	
-	public void setBGShader(Shader shader){
-		this.bgShader = shader;
-	}
-	
 }
