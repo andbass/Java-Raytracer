@@ -2,7 +2,8 @@ import Raytracer.*;
 import Raytracer.Geometry.*;
 import Raytracer.Lights.*;
 import Raytracer.Math.*;
-import Raytracer.Swing.JRaytracer;
+import Raytracer.Shaders.*;
+import Raytracer.Swing.*;
 
 public class Program {
 	
@@ -23,8 +24,13 @@ public class Program {
 		scene.addGeometry(sphere);
 		scene.addLight(light);
 		
+//		scene.setBGColorCalc(new BGCalc());
 		raytracer.render(scene, cam);
 	}
-	
-	
+}
+
+class BGShader implements Shader {
+	public Color shade(Scene scene, RaycastResult result, double x, double y){
+		return Color.RED;
+	}
 }
