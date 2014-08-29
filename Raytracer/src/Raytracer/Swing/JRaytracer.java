@@ -98,11 +98,13 @@ public class JRaytracer extends JFrame implements KeyListener {
 			case KeyEvent.VK_ENTER:
 			{
 				if (e.isAltDown()) switchFullscren();
+				break;
 			}
 
 			case KeyEvent.VK_ESCAPE:
 			{
 				System.exit(0);
+				break;
 			}
 			
 		}

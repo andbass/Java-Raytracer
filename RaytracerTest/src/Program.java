@@ -16,7 +16,7 @@ public class Program {
 
 		Camera cam = new Camera(Vec3.ZERO, new Vec3(0,0,1), new Vec3(0,1,0), 60);
 		
-		Sphere sphere = new Sphere(new Vec3(0,0,20), 7, Color.BLUE, Color.WHITE, 0.01);
+		Sphere sphere = new Sphere(new Vec3(0,0,20), 7, Color.WHITE, Color.WHITE, 0.01);
 		PointLight light = new PointLight(new Vec3(0,25,-5), Color.WHITE);
 		
 		Scene scene = new Scene();
