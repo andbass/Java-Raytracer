@@ -18,7 +18,7 @@ public class Program {
 		scene.addGeometry(sphere);
 		scene.addLight(light);
 		
-		scene.setBGColor(Color.BLACK);
+		scene.setBGColor(Color.OFF_WHITE);
 		raytracer.render(scene, cam);
 	}
 }
