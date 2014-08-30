@@ -28,4 +28,8 @@ public interface Material {
 	 */
 	public Color		getSpecular(Vec3 point);
 	
+	public double getReflectivity(Vec3 point);
+	
+	public double getShininess(Vec3 point);
+	
 }
