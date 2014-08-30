@@ -3,7 +3,7 @@ package Raytracer.Materials;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec3;
 
-public class Checkered implements Material {
+public class Checkered extends Material {
 
 	public static final Checkered WHITE_BLACK = new Checkered(10, Color.WHITE, Color.BLACK);
 	public static final Checkered WHITE_RED	  = new Checkered(10, Color.WHITE, Color.RED);
@@ -16,19 +16,20 @@ public class Checkered implements Material {
 	private Color ambient, diffuse1, diffuse2, specular;
 	private double size; 
 	
+	public Checkered(double size, Checkered checkered){
+		this(size, checkered.getAmbient(Vec3.ZERO), checkered.getFirstDiffuse(), checkered.getSecondDiffuse(), checkered.getSpecular(Vec3.ZERO), 5, 5);
+	}
+	
 	public Checkered(double size, Color diffuse1, Color diffuse2){
 		this(size, Color.BLACK, diffuse1, diffuse2, Color.WHITE, 5, 5);
 	}
 
 	public Checkered(double size, Color ambient, Color diffuse1, Color diffuse2, Color specular, double shininess, double reflectivity){
+		super(shininess, reflectivity);
+		
 		this.size = 100 / size;
 		this.ambient = ambient;
 		this.diffuse1 = diffuse1;  this.diffuse2 = diffuse2;  this.specular = specular;
-		this.reflectivity = reflectivity;  this.shininess = shininess;
-	}
-	
-	public Checkered(double size, Checkered checkered){
-		this(size, checkered.getAmbient(Vec3.ZERO), checkered.getFirstDiffuse(), checkered.getSecondDiffuse(), checkered.getSpecular(Vec3.ZERO), 5, 5);
 	}
 	
 	public Color getAmbient(Vec3 uv) {
@@ -58,15 +59,4 @@ public class Checkered implements Material {
 	public Color getSpecular(Vec3 uv) {
 		return specular;
 	}
-
-	public double getReflectivity(Vec3 uv) {
-		return reflectivity;
-	}
-
-	public double getShininess(Vec3 uv) {
-		return shininess;
-	}
-
-
-
 }
