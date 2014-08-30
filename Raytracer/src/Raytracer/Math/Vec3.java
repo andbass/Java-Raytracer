@@ -38,6 +38,10 @@ public class Vec3 {
 		return new Vec3(this.y*vec.z - this.z*vec.y, this.x*vec.z - this.z*vec.x, this.y*vec.x - this.x*vec.y);
 	}
 	
+	public Vec3 reflect(Vec3 normal){
+		return normal.scale(2 * this.dot(normal)).sub(this);
+	}
+	
 	public Vec3 normalize(){
 		double length = length();
 		return new Vec3(this.x / length, this.y / length, this.z / length);
