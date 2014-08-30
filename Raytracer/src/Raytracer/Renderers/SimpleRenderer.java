@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 
 import Raytracer.Core.Camera;
+import Raytracer.Core.Debug;
 import Raytracer.Core.Ray;
 import Raytracer.Core.RaycastResult;
 import Raytracer.Core.Scene;
@@ -16,6 +17,7 @@ public class SimpleRenderer {
 	
 	private int samples, sqrtSamples;
 
+	private int raysCasted = 0;
 	//private double subPixelSize;
 	
 	/*
@@ -46,11 +48,14 @@ public class SimpleRenderer {
 				Ray camRay = cam.getRay(ndcX, ndcY);
 				
 				RaycastResult result = scene.raycast(camRay);
-				Color pixelColor = scene.getColor(result, ndcX, ndcY).toAwtColor();
+				raysCasted++;
+				
+				Color pixelColor = scene.getColor(result, cam, ndcX, ndcY).toAwtColor();
 				image.setRGB(x, y, pixelColor.getRGB());
 			}
 		}
 		
+		Debug.Write(raysCasted);
 		return image;
 	}
 	

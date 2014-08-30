@@ -9,7 +9,4 @@ public class Debug {
 		System.out.println(obj);
 	}
 	
-	
-	
-	
 }

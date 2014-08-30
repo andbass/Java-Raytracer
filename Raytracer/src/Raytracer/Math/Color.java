@@ -11,14 +11,10 @@ public class Color {
 	public static final Color BLACK 	= new Color(0,0,0);
 	public static final Color OFF_WHITE = new Color(210, 200, 190);
 	
-	public int r,g,b;
-	
-	public Color(int r, int g, int b){
-		this.r = r;  this.g = g;  this.b = b;
-	}
+	public double r,g,b;
 	
 	public Color(double r, double g, double b){
-		this.r = (int)r;  this.g = (int)g;  this.b = (int)b;
+		this.r = r;  this.g = g;  this.b = b;
 	}
 	
 	public Color(java.awt.Color color){
@@ -29,12 +25,24 @@ public class Color {
 		return new Color(this.r + color.r, this.g + color.g, this.b + color.b);
 	}
 	
+	public Color sub(Color color) {
+		return new Color(this.r - color.r, this.g - color.g, this.b - color.b);
+	}
+	
 	public Color scale(double number){
 		return new Color(r*number, g*number, b*number);
 	}
 	
-	public Color divide(double number){
+	public Color descale(double number){
 		return new Color(r/number, g/number, b/number);
+	}
+	
+	public Color mul(Color col){
+		return new Color(this.r*col.r, this.g*col.g, this.b*col.b);
+	}
+	
+	public Color div(Color col){
+		return new Color(r/col.r, g/col.g, b/col.b);
 	}
 	
 	/**
@@ -42,18 +50,20 @@ public class Color {
 	 */
 	public Color restrictRange()
 	{
-		int r = Math.min(Math.max(this.r, 0), 255);
-		int g = Math.min(Math.max(this.g, 0), 255);
-		int b = Math.min(Math.max(this.b, 0), 255);
+		double r = Math.min(Math.max(this.r, 0), 255);
+		double g = Math.min(Math.max(this.g, 0), 255);
+		double b = Math.min(Math.max(this.b, 0), 255);
 		return new Color(r, g, b);
 	}
 	
 	public java.awt.Color toAwtColor(){
 		Color restrictedColor = this.restrictRange();
-		return new java.awt.Color(restrictedColor.r, restrictedColor.g, restrictedColor.b);
+		return new java.awt.Color((int)restrictedColor.r, (int)restrictedColor.g, (int)restrictedColor.b);
 	}
 	
 	public String toString(){
 		return "(" + r + ',' + g + ',' + b + ')';
 	}
+
+
 }
