@@ -37,4 +37,14 @@ public class FlatColor implements Material {
 		return specular;
 	}
 
+	public double getReflectivity(Vec3 point) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public double getShininess(Vec3 point) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
