@@ -1,8 +1,12 @@
 package Raytracer.Materials;
 
 import Raytracer.Math.Color;
+import Raytracer.Math.Vec2;
 import Raytracer.Math.Vec3;
 
+/**
+ * A Material represents a two dimensinal surface that is wrapped around Geometry
+ */
 public interface Material {
 	/*
 	 * The ambient color of an object.  Represents lighting from small amounts of light
@@ -27,5 +31,9 @@ public interface Material {
 	 * striking the point.
 	 */
 	public Color		getSpecular(Vec3 point);
+	
+	public double 		getReflectivity(Vec3 point);
+	
+	public double 		getShininess(Vec3 point);
 	
 }

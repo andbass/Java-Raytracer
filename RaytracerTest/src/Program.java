@@ -11,14 +11,19 @@ public class Program {
 
 		Camera cam = new Camera(Vec3.ZERO, new Vec3(0,0,1), new Vec3(0,1,0), 60);
 		
-		Sphere sphere = new Sphere(new Vec3(0,0,20), 7, FlatColor.WHITE);
-		PointLight light = new PointLight(new Vec3(0,25,-5), Color.WHITE);
+		// Geometry
+		Sphere sphere = new Sphere(new Vec3(0,0,20), 7, Checkered.WHITE_RED);
+		Sphere sphere2 = new Sphere(new Vec3(-20, -2, 30), 5, FlatColor.GREEN);
+		
+		// Lights
+		PointLight light = new PointLight(new Vec3(0,5,-5), Color.WHITE);
 		
 		Scene scene = new Scene();
-		scene.addGeometry(sphere);
+		scene.addGeometry(sphere, sphere2);
 		scene.addLight(light);
-		
+
 		scene.setBGColor(Color.BLACK);
 		raytracer.render(scene, cam);
 	}
+
 }

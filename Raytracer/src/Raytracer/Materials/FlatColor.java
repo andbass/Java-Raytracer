@@ -16,13 +16,20 @@ public class FlatColor implements Material {
 	public static final FlatColor OFF_WHITE = new FlatColor(Color.OFF_WHITE);
 	
 	private Color ambient, diffuse, specular;
+	private double reflectivity, shininess;
 	
 	public FlatColor(Color diffuse){
-		this(Color.BLACK, diffuse, Color.WHITE);
+		this(diffuse, 5, 5);
 	}
 	
-	public FlatColor(Color ambient, Color diffuse, Color specular){
+	public FlatColor(Color diffuse, double shininess, double reflectivity){
+		this(Color.BLACK, diffuse, Color.WHITE, shininess, reflectivity);
+	}
+	
+	public FlatColor(Color ambient, Color diffuse, Color specular, double shininess, double reflectivity){
 		this.ambient = ambient;  this.diffuse = diffuse;  this.specular = specular;
+		this.reflectivity = reflectivity;
+		this.shininess = shininess;
 	}
 	
 	public Color getAmbient(Vec3 point) {
@@ -35,6 +42,14 @@ public class FlatColor implements Material {
 
 	public Color getSpecular(Vec3 point) {
 		return specular;
+	}
+
+	public double getReflectivity(Vec3 point) {
+		return reflectivity;
+	}
+
+	public double getShininess(Vec3 point) {
+		return shininess;
 	}
 
 }

@@ -6,10 +6,6 @@ public class Vec3 {
 	
 	public double x, y, z;
 	
-	public Vec3(double x, double y){
-		this(x, y, 0);
-	}
-	
 	public Vec3(double x, double y, double z){
 		this.x = x;  this.y = y;  this.z = z;
 	}
@@ -36,6 +32,10 @@ public class Vec3 {
 	
 	public Vec3 cross(Vec3 vec){
 		return new Vec3(this.y*vec.z - this.z*vec.y, this.x*vec.z - this.z*vec.x, this.y*vec.x - this.x*vec.y);
+	}
+	
+	public Vec3 reflect(Vec3 normal){
+		return normal.scale(2 * this.dot(normal)).sub(this);
 	}
 	
 	public Vec3 normalize(){

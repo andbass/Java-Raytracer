@@ -1,23 +1,23 @@
 package Raytracer.Geometry;
 
+import Raytracer.Core.Debug;
 import Raytracer.Core.Ray;
 import Raytracer.Core.RaycastResult;
 import Raytracer.Materials.Material;
 import Raytracer.Math.Color;
 import Raytracer.Math.QuadraticEquation;
+import Raytracer.Math.Vec2;
 import Raytracer.Math.Vec3;
 
-public class Sphere implements Geometry {
+public class Sphere extends Geometry {
 	private Vec3 pos;
 	private double radius, radiusSquared;
 	
-	private Material mat;
-	
-	public Sphere(Vec3 pos, double radius, Material mat){
+	public Sphere(Vec3 pos, double radius, Material mat){	
 		this.pos = pos;
 		setRadius(radius);
 		
-		this.mat = mat;
+		super.setMaterial(mat);
 	}
 	
 	public RaycastResult collide(Ray ray) {
@@ -62,9 +62,22 @@ public class Sphere implements Geometry {
 		point = point.sub(pos);
 		return point.normalize();
 	}
-	
-	public Material getMaterial(){
-		return mat;
+
+	public Color getDiffuse(Vec3 point) {
+		point = getNormal(point);
+		
+		Vec2 uv = new Vec2(0.5 + Math.atan2(point.z, point.x) / (2*Math.PI),
+						   0.5 - Math.asin(point.y) / Math.PI);
+		
+		return material.getDiffuse(uv);
+	}
+
+	public Color getAmbient(Vec3 point) {
+		return material.getAmbient(point);
+	}
+
+	public Color getSpecular(Vec3 point) {
+		return material.getSpecular(point);
 	}
 }
 	
