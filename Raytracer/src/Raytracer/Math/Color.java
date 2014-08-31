@@ -1,15 +1,17 @@
 package Raytracer.Math;
 
 public class Color {
-    public static final Color RED    	= new Color(220,0,0);
-	public static final Color GREEN	 	= new Color(0,220,0);
-	public static final Color BLUE	 	= new Color(0,0,220);
-	public static final Color YELLOW 	= new Color(220,220,0);
-	public static final Color ORANGE 	= new Color(175,95,0);
-	public static final Color MAGNETA 	= new Color(220,0,200);
-	public static final Color WHITE	 	= new Color(255,255,255);
-	public static final Color BLACK 	= new Color(0,0,0);
-	public static final Color OFF_WHITE = new Color(210, 200, 190);
+    public static final Color RED    		= new Color(220,0,0);
+	public static final Color GREEN	 		= new Color(0,220,0);
+	public static final Color BLUE	 		= new Color(0,0,220);
+	public static final Color YELLOW 		= new Color(220,220,0);
+	public static final Color ORANGE 		= new Color(175,95,0);
+	public static final Color MAGNETA 		= new Color(220,0,200);
+	public static final Color WHITE	 		= new Color(255,255,255);
+	public static final Color GREY			= new Color(128,128,128);
+	public static final Color LIGHT_GREY 	= new Color(200,200,200);
+	public static final Color BLACK 		= new Color(0,0,0);
+	public static final Color OFF_WHITE 	= new Color(210, 200, 190);
 	
 	public double r,g,b;
 	

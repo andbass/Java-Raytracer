@@ -64,7 +64,7 @@ public class Scene {
 			double lambTerm = Math.max(normal.dot(pointToLight),0);
 			
 			Color scaledDiffuse = objDiffuse.scale(lambTerm);
-			scaledDiffuse.mul(lightDiffuseIntensity);
+			scaledDiffuse = scaledDiffuse.mul(lightDiffuseIntensity);
 			
 			pointColor = pointColor.add(scaledDiffuse);
 			
@@ -76,7 +76,8 @@ public class Scene {
 			double specTerm = Math.pow(cosAngle, mat.getShininess(hitPoint));
 			
 			Color filter = Color.WHITE.sub(scaledDiffuse).descale(255);
-			Color scaledSpecular = objSpecular.scale(specTerm).mul(filter);
+			Color scaledSpecular = objSpecular.scale(specTerm);
+			scaledSpecular = scaledSpecular.mul(filter);
 			
 			pointColor = pointColor.add(scaledSpecular);
 		}

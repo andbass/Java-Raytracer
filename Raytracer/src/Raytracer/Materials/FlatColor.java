@@ -41,5 +41,9 @@ public class FlatColor extends Material {
 	public Color getSpecular(Vec3 point) {
 		return specular;
 	}
+	
+	public void setAmbient(Color ambient) 	{ this.ambient = ambient; }
+	public void setDiffuse(Color diffuse) 	{ this.diffuse = diffuse; }
+	public void setSpecular(Color specular) { this.specular = specular; }
 
 }
