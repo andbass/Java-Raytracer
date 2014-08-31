@@ -65,7 +65,7 @@ public class JRaytracerViewport extends JComponent {
 		public void setPreferredSize(Dimension resolution){
 			super.setPreferredSize(resolution);
 			this.resolution = resolution;
-			renderer = new SimpleRenderer(resolution, 1);
+			renderer = new SimpleRenderer(resolution, 1, 4);
 		}
 		
 		

@@ -7,11 +7,11 @@ public class Checkered extends Material {
 
 	public static final Checkered WHITE_BLACK = new Checkered(10, Color.WHITE, Color.BLACK);
 	public static final Checkered WHITE_RED	  = new Checkered(10, Color.WHITE, Color.RED);
+	public static final Checkered YELLOW_GREEN = new Checkered(10, Color.YELLOW, Color.GREEN);
 	
 	public static final Checkered SMALL_WHITE_BLACK = new Checkered(1, Color.WHITE, Color.BLACK);
 	public static final Checkered SMALL_WHITE_RED	= new Checkered(1, Color.WHITE, Color.RED);
-	
-	private double reflectivity, shininess;
+	public static final Checkered SMALL_YELLOW_GREEN = new Checkered(1, Color.YELLOW, Color.GREEN);
 	
 	private Color ambient, diffuse1, diffuse2, specular;
 	private double size; 

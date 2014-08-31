@@ -13,7 +13,7 @@ public class Program {
 		
 		// Geometry
 		Sphere sphere = new Sphere(new Vec3(0,0,20), 7, Checkered.WHITE_RED);
-		Sphere sphere2 = new Sphere(new Vec3(-20, -2, 30), 5, FlatColor.GREEN);
+		Sphere sphere2 = new Sphere(new Vec3(-20, -2, 30), 5, FlatColor.MAGNETA);
 		
 		// Lights
 		PointLight light = new PointLight(new Vec3(0,5,-5), Color.WHITE);

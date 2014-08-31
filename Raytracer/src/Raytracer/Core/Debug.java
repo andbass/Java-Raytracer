@@ -1,5 +1,7 @@
 package Raytracer.Core;
 
+import java.text.NumberFormat;
+
 public class Debug {
 	public static boolean CONSOLE_ENABLED = true;
 	
@@ -8,5 +10,6 @@ public class Debug {
 		
 		System.out.println(obj);
 	}
+
 	
 }

@@ -9,7 +9,7 @@ import Raytracer.Math.Vec3;
  */
 public abstract class Material {
 	
-	private double shininess, reflectivity;
+	protected double shininess, reflectivity;
 	
 	public Material(double shininess, double reflectivity){
 		this.shininess = shininess;  this.reflectivity = reflectivity;
