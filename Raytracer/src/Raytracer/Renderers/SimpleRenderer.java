@@ -51,9 +51,12 @@ public class SimpleRenderer {
 		{
 			for (int x = 0; x < width; x++)
 			{
-				double ndcX = ((double)x / width * 2 - 1) * ratio * cam.getFovMultipler();
-				double ndcY = ((double)(height-y) / height * 2 - 1) * cam.getFovMultipler();
-				coords.set(ndcX, ndcY);
+				double sX = (double)x / width;
+				double sY = (double)(height - y) / height;
+				
+				double ndcX = (sX * 2 - 1) * ratio * cam.getFovMultipler();
+				double ndcY = (sY * 2 - 1) * cam.getFovMultipler();
+				coords.set(sX*ratio, sY);
 				
 				Ray camRay = cam.getRay(ndcX, ndcY);
 				
