@@ -7,13 +7,14 @@ import Raytracer.Geometry.Geometry;
 import Raytracer.Lights.Light;
 import Raytracer.Materials.Material;
 import Raytracer.Math.Color;
+import Raytracer.Math.Vec2;
 import Raytracer.Math.Vec3;
 
 public class Scene {
 	private List<Geometry> 	geomList;
 	private List<Light>		lightList;
 	
-	private Color			bgColor;
+	private Material		bgMaterial;
 	
 	public Scene(){
 		geomList = new ArrayList<Geometry>();
@@ -34,14 +35,14 @@ public class Scene {
 		return closestResult;
 	}
 
-	public Color getColor(RaycastResult result, Camera camera, double x, double y){
+	public Color getColor(RaycastResult result, Camera camera, Vec2 screenCoords){
 		if (!result.hit){
-			return getBGColor(x, y);
+			return bgMaterial.getDiffuse(screenCoords);
 		}
-		return getObjectColor(result, camera, x, y);
+		return getObjectColor(result, camera);
 	}
 	
-	protected Color getObjectColor(RaycastResult result, Camera camera, double x, double y){
+	protected Color getObjectColor(RaycastResult result, Camera camera){
 		Color pointColor = Color.BLACK;
 
 		Vec3 hitPoint = result.hitPoint;
@@ -64,7 +65,7 @@ public class Scene {
 			double lambTerm = Math.max(normal.dot(pointToLight),0);
 			
 			Color scaledDiffuse = objDiffuse.scale(lambTerm);
-			scaledDiffuse.mul(lightDiffuseIntensity);
+			scaledDiffuse = scaledDiffuse.mul(lightDiffuseIntensity);
 			
 			pointColor = pointColor.add(scaledDiffuse);
 			
@@ -76,7 +77,8 @@ public class Scene {
 			double specTerm = Math.pow(cosAngle, mat.getShininess(hitPoint));
 			
 			Color filter = Color.WHITE.sub(scaledDiffuse).descale(255);
-			Color scaledSpecular = objSpecular.scale(specTerm).mul(filter);
+			Color scaledSpecular = objSpecular.scale(specTerm);
+			scaledSpecular = scaledSpecular.mul(filter);
 			
 			pointColor = pointColor.add(scaledSpecular);
 		}
@@ -84,10 +86,10 @@ public class Scene {
 		return pointColor.add(objAmbient);	
 	}
 	
-	public void setBGColor(Color color) { bgColor = color; }
+	public void setBGMaterial(Material mat) { bgMaterial = mat; }
 	
-	protected Color getBGColor(double x, double y){
-		return bgColor;
+	protected Material getBGMaterial(){
+		return bgMaterial;
 	}
 	
 	public List<Geometry> getGeometry() {

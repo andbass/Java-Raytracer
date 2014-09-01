@@ -4,39 +4,48 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.text.NumberFormat;
 
 import Raytracer.Core.Camera;
 import Raytracer.Core.Debug;
 import Raytracer.Core.Ray;
 import Raytracer.Core.RaycastResult;
 import Raytracer.Core.Scene;
+import Raytracer.Math.Vec2;
 
 public class SimpleRenderer {
 	private int width, height;
 	private double ratio;
 	
 	private int samples, sqrtSamples;
+	private double subPixelSize;
+	
+	private int threadCount, threadRenderHeight;
 
 	private int raysCasted = 0;
-	//private double subPixelSize;
 	
-	/*
-	 * Construct a SimpleRenderer with a given resolution and
+	/**
+	 * Constructs a SimpleRenderer with a given resolution and
 	 * number of samples. The number of samples must be a perfect square
 	 * as to properly subdivide a pixel (which we assume to be 1x1 units)
 	 */
-	public SimpleRenderer(Dimension resolution, int samples){
+	public SimpleRenderer(Dimension resolution, int samples, int threadCount){
 		this.width = resolution.width;  this.height = resolution.height;
 		this.ratio = (double)width / height;
+		
+		setThreadCount(threadCount);
 		setSamples(samples);
 
 	}
 	
 	/**
-	 * Renders the objects in a scene using the provided camera.
+	 * Renders a scene using the provided camera.
 	 */
 	public Image render(Scene scene, Camera cam){
+		NumberFormat formatter = NumberFormat.getInstance();
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		
+		Vec2 coords = new Vec2(0,0);
 		
 		for (int y = 0; y < height; y++)
 		{
@@ -44,18 +53,19 @@ public class SimpleRenderer {
 			{
 				double ndcX = ((double)x / width * 2 - 1) * ratio * cam.getFovMultipler();
 				double ndcY = ((double)(height-y) / height * 2 - 1) * cam.getFovMultipler();
+				coords.set(ndcX, ndcY);
 				
 				Ray camRay = cam.getRay(ndcX, ndcY);
 				
 				RaycastResult result = scene.raycast(camRay);
 				raysCasted++;
 				
-				Color pixelColor = scene.getColor(result, cam, ndcX, ndcY).toAwtColor();
+				Color pixelColor = scene.getColor(result, cam, coords).toAwtColor();
 				image.setRGB(x, y, pixelColor.getRGB());
 			}
 		}
 		
-		Debug.Write(raysCasted);
+		Debug.Write(formatter.format(raysCasted));
 		return image;
 	}
 	
@@ -69,5 +79,12 @@ public class SimpleRenderer {
 		}
 		this.samples 		= samples;
 	//	this.subPixelSize 	= 1.0 / sqrtSamples; 
+	}
+	
+	public int getThreadCount() { return threadCount; }
+	
+	public void setThreadCount(int threadCount){
+		this.threadCount = threadCount;
+		
 	}
 }
