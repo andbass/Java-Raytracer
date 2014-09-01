@@ -1,5 +1,11 @@
 package Raytracer.Debugging;
 
-public class Log {
+import java.util.List;
 
+public class Log {
+	private List<LogEntry> entries;
+	
+	public Log(){
+		
+	}
 }
