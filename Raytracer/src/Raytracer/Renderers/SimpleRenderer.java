@@ -7,10 +7,10 @@ import java.awt.image.BufferedImage;
 import java.text.NumberFormat;
 
 import Raytracer.Core.Camera;
-import Raytracer.Core.Debug;
 import Raytracer.Core.Ray;
 import Raytracer.Core.RaycastResult;
 import Raytracer.Core.Scene;
+import Raytracer.Debugging.Debug;
 import Raytracer.Math.Vec2;
 
 public class SimpleRenderer {

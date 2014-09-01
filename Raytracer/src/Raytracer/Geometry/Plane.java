@@ -1,8 +1,8 @@
 package Raytracer.Geometry;
 
-import Raytracer.Core.Debug;
 import Raytracer.Core.Ray;
 import Raytracer.Core.RaycastResult;
+import Raytracer.Debugging.Debug;
 import Raytracer.Materials.Material;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec3;

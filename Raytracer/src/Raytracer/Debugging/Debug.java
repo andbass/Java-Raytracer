@@ -1,4 +1,4 @@
-package Raytracer.Core;
+package Raytracer.Debugging;
 
 import java.text.NumberFormat;
 

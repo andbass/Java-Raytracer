@@ -1,4 +1,5 @@
 import Raytracer.Core.*;
+import Raytracer.Debugging.*;
 import Raytracer.Geometry.*;
 import Raytracer.Lights.*;
 import Raytracer.Materials.*;
@@ -11,19 +12,15 @@ public class Program {
 
 		Camera cam = new Camera(new Vec3(0,7,-5), Vec3.FORWARD, Vec3.UP, 60);
 		
-		// Material
-		Material dullCheckered = Checkered.LARGE_YELLOW_GREEN;
-		dullCheckered.setShininess(1);
-		
 		// Geometry
 		Sphere sphere 	= new Sphere(new Vec3(0,7,20), 7, Checkered.WHITE_RED);
 		Sphere sphere2 	= new Sphere(new Vec3(-20, 5, 30), 5, FlatColor.MAGNETA);
-		Plane plane 	= new Plane(Vec3.ZERO, Vec3.UP, dullCheckered);
+		Plane plane 	= new Plane(Vec3.ZERO, Vec3.UP, Checkered.LARGE_YELLOW_GREEN);
 		
 		// Lights
 		PointLight light = new PointLight(new Vec3(0,50,0), Color.WHITE);
 		PointLight light2 = new PointLight(new Vec3(0,20,-50), Color.WHITE);
-		
+	
 		Scene scene = new Scene();
 		scene.addGeometry(sphere, sphere2, plane);
 		scene.addLight(light, light2);
