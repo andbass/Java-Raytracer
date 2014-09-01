@@ -21,8 +21,6 @@ public class SimpleRenderer {
 	private double subPixelSize;
 	
 	private int threadCount, threadRenderHeight;
-
-	private int raysCasted = 0;
 	
 	/**
 	 * Constructs a SimpleRenderer with a given resolution and
@@ -42,7 +40,6 @@ public class SimpleRenderer {
 	 * Renders a scene using the provided camera.
 	 */
 	public Image render(Scene scene, Camera cam){
-		NumberFormat formatter = NumberFormat.getInstance();
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		
 		Vec2 coords = new Vec2(0,0);
@@ -61,14 +58,11 @@ public class SimpleRenderer {
 				Ray camRay = cam.getRay(ndcX, ndcY);
 				
 				RaycastResult result = scene.raycast(camRay);
-				raysCasted++;
 				
 				Color pixelColor = scene.getColor(result, cam, coords).toAwtColor();
 				image.setRGB(x, y, pixelColor.getRGB());
 			}
 		}
-		
-		Debug.Write(formatter.format(raysCasted));
 		return image;
 	}
 	
