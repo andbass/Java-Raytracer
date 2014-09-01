@@ -112,14 +112,14 @@ public class Scene {
 	}
 	
 	public void addGeometry(Geometry...geom){
-		for (int i = 0; i < geom.length; i++){
-			geomList.add(geom[i]);	
+		for (Geometry geometry : geom){
+			geomList.add(geometry);
 		}
 	}
 	
 	public void addLight(Light...lights){
-		for (int i = 0; i < lights.length; i++){
-			lightList.add(lights[i]);	
+		for (Light light : lights){
+			lightList.add(light);
 		}
 	}
 }
