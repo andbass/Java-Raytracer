@@ -37,5 +37,7 @@ public class PointLight implements Light {
 	public Vec3 getDir(Vec3 point) {
 		return pos.sub(point).normalize();
 	}
+	
+	public Vec3 getPos() { return pos; }
 
 }

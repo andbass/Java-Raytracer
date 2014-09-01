@@ -9,5 +9,6 @@ public interface Light {
 	public abstract Color 	getSpecular();
 
 	public abstract Vec3  	getDir(Vec3 point);
+	public abstract Vec3 	getPos();
 
 }

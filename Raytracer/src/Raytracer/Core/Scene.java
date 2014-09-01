@@ -43,10 +43,13 @@ public class Scene {
 	}
 	
 	protected Color getObjectColor(RaycastResult result, Camera camera){
+		List<Geometry> tempGeomList = new ArrayList<Geometry>(geomList);
+		
 		Color pointColor = Color.BLACK;
 
 		Vec3 hitPoint = result.hitPoint;
 		Geometry hitObj = result.hitObject;
+		geomList.remove(hitObj);
 		
 		Color objDiffuse = hitObj.getDiffuse(hitPoint);
 		Color objSpecular = hitObj.getSpecular(hitPoint);
@@ -58,31 +61,39 @@ public class Scene {
 		
 		for (Light light : lightList){
 			Vec3 pointToLight = light.getDir(hitPoint);
+			double distToLight = hitPoint.dist(light.getPos());
 			
-			Color lightDiffuseIntensity = light.getDiffuse().descale(255);
+			Ray shadowRay = new Ray(hitPoint, pointToLight);
 			
-			// Diffuse
-			double lambTerm = Math.max(normal.dot(pointToLight),0);
+			RaycastResult shadowResult = this.raycast(shadowRay);
 			
-			Color scaledDiffuse = objDiffuse.scale(lambTerm);
-			scaledDiffuse = scaledDiffuse.mul(lightDiffuseIntensity);
-			
-			pointColor = pointColor.add(scaledDiffuse);
-			
-			// Specular
-			Vec3 reflectedLightDir = pointToLight.reflect(normal);
-			Vec3 pointToCam = camera.getPos().sub(hitPoint).normalize();
-			
-			double cosAngle = Math.max(reflectedLightDir.dot(pointToCam), 0);
-			double specTerm = Math.pow(cosAngle, mat.getShininess(hitPoint));
-			
-			Color filter = Color.WHITE.sub(scaledDiffuse).descale(255);
-			Color scaledSpecular = objSpecular.scale(specTerm);
-			scaledSpecular = scaledSpecular.mul(filter);
-			
-			pointColor = pointColor.add(scaledSpecular);
+			if (!shadowResult.hit || shadowResult.distance > distToLight || shadowResult.hitObject == hitObj){
+				Color lightDiffuseIntensity = light.getDiffuse().descale(255);
+				
+				// Diffuse
+				double lambTerm = Math.max(normal.dot(pointToLight),0);
+				
+				Color scaledDiffuse = objDiffuse.scale(lambTerm);
+				scaledDiffuse = scaledDiffuse.mul(lightDiffuseIntensity);
+				
+				pointColor = pointColor.add(scaledDiffuse);
+				
+				// Specular
+				Vec3 reflectedLightDir = pointToLight.reflect(normal);
+				Vec3 pointToCam = camera.getPos().sub(hitPoint).normalize();
+				
+				double cosAngle = Math.max(reflectedLightDir.dot(pointToCam), 0);
+				double specTerm = Math.pow(cosAngle, mat.getShininess(hitPoint));
+				
+				Color filter = Color.WHITE.sub(scaledDiffuse).descale(255);
+				Color scaledSpecular = objSpecular.scale(specTerm);
+				scaledSpecular = scaledSpecular.mul(filter);
+				
+				pointColor = pointColor.add(scaledSpecular);
+			}
 		}
 
+		geomList = tempGeomList;
 		return pointColor.add(objAmbient);	
 	}
 	

@@ -9,18 +9,24 @@ public class Program {
 	public static void main(String[] args){
 		JRaytracer raytracer = new JRaytracer("Raytracer (Alt + Enter to fullscreen)", 1280, 720);
 
-		Camera cam = new Camera(Vec3.ZERO, new Vec3(0,0,1), new Vec3(0,1,0), 60);
+		Camera cam = new Camera(new Vec3(0,7,-5), Vec3.FORWARD, Vec3.UP, 60);
+		
+		// Material
+		Material dullCheckered = Checkered.LARGE_YELLOW_GREEN;
+		dullCheckered.setShininess(1);
 		
 		// Geometry
-		Sphere sphere = new Sphere(new Vec3(0,0,20), 7, Checkered.WHITE_RED);
-		Sphere sphere2 = new Sphere(new Vec3(-20, -2, 30), 5, FlatColor.MAGNETA);
+		Sphere sphere 	= new Sphere(new Vec3(0,7,20), 7, Checkered.WHITE_RED);
+		Sphere sphere2 	= new Sphere(new Vec3(-20, 5, 30), 5, FlatColor.MAGNETA);
+		Plane plane 	= new Plane(Vec3.ZERO, Vec3.UP, dullCheckered);
 		
 		// Lights
-		PointLight light = new PointLight(new Vec3(0,5,-5), Color.WHITE);
+		PointLight light = new PointLight(new Vec3(0,50,0), Color.WHITE);
+		PointLight light2 = new PointLight(new Vec3(0,20,-50), Color.WHITE);
 		
 		Scene scene = new Scene();
-		scene.addGeometry(sphere, sphere2);
-		scene.addLight(light);
+		scene.addGeometry(sphere, sphere2, plane);
+		scene.addLight(light, light2);
 		
 		scene.setBGMaterial(FlatColor.BLACK);
 		raytracer.render(scene, cam);

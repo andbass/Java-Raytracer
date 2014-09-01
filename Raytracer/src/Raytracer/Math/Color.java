@@ -10,6 +10,7 @@ public class Color {
 	public static final Color WHITE	 		= new Color(255,255,255);
 	public static final Color GREY			= new Color(128,128,128);
 	public static final Color LIGHT_GREY 	= new Color(200,200,200);
+	public static final Color DARK_GREY 	= new Color(64,64,64);
 	public static final Color BLACK 		= new Color(0,0,0);
 	public static final Color OFF_WHITE 	= new Color(210, 200, 190);
 	
