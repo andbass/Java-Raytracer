@@ -22,7 +22,7 @@ public class Program {
 		scene.addGeometry(sphere, sphere2);
 		scene.addLight(light);
 		
-		scene.setBGColor(Color.BLACK);
+		scene.setBGMaterial(FlatColor.BLACK);
 		raytracer.render(scene, cam);
 	}
 

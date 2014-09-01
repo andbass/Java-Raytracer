@@ -11,6 +11,7 @@ import Raytracer.Core.Debug;
 import Raytracer.Core.Ray;
 import Raytracer.Core.RaycastResult;
 import Raytracer.Core.Scene;
+import Raytracer.Math.Vec2;
 
 public class SimpleRenderer {
 	private int width, height;
@@ -44,19 +45,22 @@ public class SimpleRenderer {
 		NumberFormat formatter = NumberFormat.getInstance();
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		
+		Vec2 coords = new Vec2(0,0);
+		
 		for (int y = 0; y < height; y++)
 		{
 			for (int x = 0; x < width; x++)
 			{
 				double ndcX = ((double)x / width * 2 - 1) * ratio * cam.getFovMultipler();
 				double ndcY = ((double)(height-y) / height * 2 - 1) * cam.getFovMultipler();
+				coords.set(ndcX, ndcY);
 				
 				Ray camRay = cam.getRay(ndcX, ndcY);
 				
 				RaycastResult result = scene.raycast(camRay);
 				raysCasted++;
 				
-				Color pixelColor = scene.getColor(result, cam, ndcX, ndcY).toAwtColor();
+				Color pixelColor = scene.getColor(result, cam, coords).toAwtColor();
 				image.setRGB(x, y, pixelColor.getRGB());
 			}
 		}
