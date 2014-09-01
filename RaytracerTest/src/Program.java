@@ -30,11 +30,13 @@ public class Program {
 		Scene scene = new Scene();
 		scene.addGeometry(sphere, sphere2, plane);
 		scene.addLight(light, light2);
-		
-		Debug.Write(Instant.now());
-		
+
 		scene.setBGMaterial(FlatColor.BLACK);
 		raytracer.render(scene, cam);
+		
+		Debug.LOG.add("hi");
+		
+		Debug.writeLog();
 	}
 
 }
