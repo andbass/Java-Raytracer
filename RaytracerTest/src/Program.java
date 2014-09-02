@@ -1,5 +1,3 @@
-import java.time.Instant;
-
 import Raytracer.Core.Camera;
 import Raytracer.Core.Scene;
 import Raytracer.Debugging.Debug;

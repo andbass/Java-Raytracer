@@ -75,7 +75,7 @@ public class SimpleRenderer {
 			throw new IllegalArgumentException("The number of samples to be a perfect square, as the supersampling uses a square grid to cast additional rays");
 		}
 		this.samples 		= samples;
-	//	this.subPixelSize 	= 1.0 / sqrtSamples; 
+		this.subPixelSize 	= 1.0 / sqrtSamples; 
 	}
 	
 	public int getThreadCount() { return threadCount; }
