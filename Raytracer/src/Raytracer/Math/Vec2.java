@@ -17,4 +17,9 @@ public class Vec2 extends Vec3 {
 	public Vec2 toNDC(){
 		return new Vec2(-1 + x * 2, -1 + x * 2);
 	}
+	
+	public Vec2 scale(double number){
+		Vec3 temp = super.scale(number);
+		return new Vec2(temp.x, temp.y);
+	}
 }
