@@ -1,13 +1,16 @@
 package Raytracer.Swing;
 
-import Raytracer.Core.Camera;
-import Raytracer.Core.Scene;
-
-import javax.swing.*;
-
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import javax.swing.JFrame;
+
+import Raytracer.Core.Camera;
+import Raytracer.Core.Scene;
+import Raytracer.Sampling.Sampler;
 
 
 /**
@@ -29,18 +32,18 @@ public class JRaytracer extends JFrame implements KeyListener {
 	private Scene lastScene;
 	private Camera lastCam;
 	
-	public JRaytracer(String title, int width, int height){
-		this(title, new Dimension(width, height));
+	public JRaytracer(String title, int width, int height, Sampler sampler){
+		this(title, new Dimension(width, height), sampler, 1);
 	}
 	
-	public JRaytracer(String title, Dimension resolution){
+	public JRaytracer(String title, Dimension resolution, Sampler sampler, int threadCount){
 		super();
 		
 		localGE = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		monitor = localGE.getDefaultScreenDevice();
 		
 		this.resolution = resolution;
-		viewport = new JRaytracerViewport(resolution);
+		viewport = new JRaytracerViewport(resolution, sampler, threadCount);
 		this.add(viewport);
 		
 		this.addKeyListener(this);

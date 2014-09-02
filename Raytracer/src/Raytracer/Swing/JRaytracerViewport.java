@@ -12,6 +12,7 @@ import javax.swing.JComponent;
 import Raytracer.Core.Camera;
 import Raytracer.Core.Scene;
 import Raytracer.Renderers.SimpleRenderer;
+import Raytracer.Sampling.Sampler;
 
 public class JRaytracerViewport extends JComponent {
 		
@@ -21,8 +22,13 @@ public class JRaytracerViewport extends JComponent {
 		private SimpleRenderer renderer;
 		private Dimension resolution;
 		
-		public JRaytracerViewport(Dimension res){
+		private int threadCount;
+		
+		private Sampler sampler;
+		
+		public JRaytracerViewport(Dimension res, Sampler sampler, int threadCount){
 			super();
+			this.sampler = sampler;  this.threadCount = threadCount;
 			setPreferredSize(res);
 			resolution = res;
 			
@@ -65,7 +71,7 @@ public class JRaytracerViewport extends JComponent {
 		public void setPreferredSize(Dimension resolution){
 			super.setPreferredSize(resolution);
 			this.resolution = resolution;
-			renderer = new SimpleRenderer(resolution, 4, 4);
+			renderer = new SimpleRenderer(resolution, sampler, threadCount);
 		}
 		
 		

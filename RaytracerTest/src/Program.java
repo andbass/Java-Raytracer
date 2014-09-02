@@ -1,19 +1,18 @@
-import Raytracer.Core.Camera;
-import Raytracer.Core.Scene;
-import Raytracer.Debugging.Debug;
-import Raytracer.Geometry.Plane;
-import Raytracer.Geometry.Sphere;
-import Raytracer.Lights.PointLight;
-import Raytracer.Materials.Checkered;
-import Raytracer.Materials.FlatColor;
-import Raytracer.Math.Color;
-import Raytracer.Math.Vec3;
-import Raytracer.Swing.JRaytracer;
+import Raytracer.Core.*;
+import Raytracer.Debugging.*;
+import Raytracer.Geometry.*;
+import Raytracer.Lights.*;
+import Raytracer.Materials.*;
+import Raytracer.Math.*;
+import Raytracer.Sampling.*;
+import Raytracer.Swing.*;
 
 public class Program {
 	public static void main(String[] args){
 
-		JRaytracer raytracer = new JRaytracer("Raytracer (Alt + Enter to fullscreen)", 1280, 720);
+		JRaytracer raytracer = new JRaytracer("Raytracer (Alt + Enter to fullscreen)", // title
+											 1280, 720,	// resolution
+											 new Grid(4));
 
 		Camera cam = new Camera(new Vec3(0,7,-5), Vec3.FORWARD, Vec3.UP, 60);
 		
@@ -21,7 +20,7 @@ public class Program {
 		Sphere sphere 	= new Sphere(new Vec3(0,7,20), 7, Checkered.WHITE_RED);
 		Sphere sphere2 	= new Sphere(new Vec3(-20, 5, 30), 5, FlatColor.MAGNETA);
 		Plane plane 	= new Plane(Vec3.ZERO, Vec3.UP, Checkered.LARGE_YELLOW_GREEN);
-		
+
 		// Lights
 		PointLight light 	= new PointLight(new Vec3(0,50,0), Color.WHITE);
 		PointLight light2	= new PointLight(new Vec3(0,20,-50), Color.WHITE);
