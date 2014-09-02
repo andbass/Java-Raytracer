@@ -3,6 +3,7 @@ package Raytracer.Core;
 import java.util.ArrayList;
 import java.util.List;
 
+import Raytracer.Debugging.Debug;
 import Raytracer.Geometry.Geometry;
 import Raytracer.Lights.Light;
 import Raytracer.Materials.Material;
@@ -27,6 +28,7 @@ public class Scene {
 		
 		for (Geometry geom : geomList){
 			RaycastResult result = geom.collide(ray);
+			Debug.raysCasted++;
 			if (result.hit && result.distance < minDist){
 				minDist = result.distance;
 				closestResult = result;

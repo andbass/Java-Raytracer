@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Log {
 	private String name;
+	private String footNote = "";
 	private List<LogEntry> entries;
 	
 	private LogTimedEntry lastTimedEntry;
@@ -27,6 +28,8 @@ public class Log {
 		lastTimedEntry.finish();
 	}
 	
+	public void addFootNote(String note) { this.footNote += note + "\n"; }
+	
 	public String toString(){
 		String contents = "";
 		
@@ -34,6 +37,6 @@ public class Log {
 			contents += entry + "\n";
 		}
 		
-		return 	"-- " + name + " --" + "\n" + contents;
+		return 	"-- " + name + " --" + "\n" + contents + "\n" + footNote + "\n" + "-- End of " + name + " --";
 	}
 }

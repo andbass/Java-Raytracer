@@ -7,6 +7,7 @@ public class Debug {
 	public static boolean loggingEnabled = true;
 	
 	public static final Log LOG = new Log("Java-Raytracer Debug Log");
+	
 	public static int raysCasted;
 	
 	public static void write(Object obj){
@@ -15,12 +16,10 @@ public class Debug {
 		System.out.println(obj);
 	}
 	
-	
 	public static void writeLog(){
-		if (!consoleEnabled) return;
+		LOG.addFootNote("Rays casted: " + raysCasted);
 		
-		System.out.println(LOG);
+		write(LOG);
 	}
-
 	
 }

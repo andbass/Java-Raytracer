@@ -14,6 +14,7 @@ import Raytracer.Swing.JRaytracer;
 
 public class Program {
 	public static void main(String[] args){
+
 		JRaytracer raytracer = new JRaytracer("Raytracer (Alt + Enter to fullscreen)", 1280, 720);
 
 		Camera cam = new Camera(new Vec3(0,7,-5), Vec3.FORWARD, Vec3.UP, 60);
@@ -32,9 +33,10 @@ public class Program {
 		scene.addLight(light, light2);
 
 		scene.setBGMaterial(FlatColor.BLACK);
-		raytracer.render(scene, cam);
 		
-		Debug.LOG.add("hi");
+		Debug.LOG.start("Test render");	
+		raytracer.render(scene, cam);
+		Debug.LOG.end();
 		
 		Debug.writeLog();
 	}

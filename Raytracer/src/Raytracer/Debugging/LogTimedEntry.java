@@ -2,6 +2,7 @@ package Raytracer.Debugging;
 
 import java.time.Instant;
 import java.time.Duration;
+import java.time.LocalTime;
 
 
 /**
@@ -11,23 +12,23 @@ import java.time.Duration;
  */
 public class LogTimedEntry extends LogEntry {
 
-	public Instant startTime;
-	public Instant finishTime;
-	
-	public Duration duration;
+	private long startTime;
+	private long endTime;
 	
 	public LogTimedEntry(String name) {
 		super(name);
-		startTime = Instant.now();
+		startTime = System.nanoTime();
 	}
 	
 	public void finish(){
-		finishTime = Instant.now();
-		duration = Duration.ofNanos(finishTime.getNano() - startTime.getNano());
+		endTime = System.nanoTime();	
 	}
 	
 	public String toString(){
-		return super.toString() + " - " + (duration.toMillis() * 1e-3);
+		long nano = endTime - startTime;
+		String sec = String.format("%.5g", nano * 1e-9);
+		
+		return super.toString() + " - " + sec + "s";
 	}
 	
 }
