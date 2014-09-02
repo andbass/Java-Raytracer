@@ -8,11 +8,13 @@ public class Log {
 	private String footNote = "";
 	private List<LogEntry> entries;
 	
-	private LogTimedEntry lastTimedEntry;
+	private List<LogTimeEntry> trackedEntries;
+	private int depth = -1;
 	
 	public Log(String name){
 		this.name = name;
 		entries = new ArrayList<LogEntry>();
+		trackedEntries = new ArrayList<LogTimeEntry>();
 	}
 	
 	public void add(String name){
@@ -20,12 +22,15 @@ public class Log {
 	}
 	
 	public void start(String name){
-		lastTimedEntry = new LogTimedEntry(name);
-		entries.add(lastTimedEntry);
+		LogTimeEntry entry = new LogTimeEntry(name);
+		entries.add(entry);
+		trackedEntries.add(entry);
+		depth++;
 	}
-	
+
 	public void end(){
-		lastTimedEntry.finish();
+		trackedEntries.get(depth).finish();
+		depth--;
 	}
 	
 	public void addFootNote(String note) { this.footNote += note + "\n"; }

@@ -10,12 +10,12 @@ import java.time.LocalTime;
  * entry took to complete or to terminate.  This is used to measure how long parts of a program take to
  * complete.
  */
-public class LogTimedEntry extends LogEntry {
+public class LogTimeEntry extends LogEntry {
 
 	private long startTime;
 	private long endTime;
 	
-	public LogTimedEntry(String name) {
+	public LogTimeEntry(String name) {
 		super(name);
 		startTime = System.nanoTime();
 	}

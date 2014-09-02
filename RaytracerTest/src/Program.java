@@ -34,7 +34,7 @@ public class Program {
 
 		scene.setBGMaterial(FlatColor.BLACK);
 		
-		Debug.LOG.start("Test render");	
+		Debug.LOG.start("Test render");
 		raytracer.render(scene, cam);
 		Debug.LOG.end();
 		
