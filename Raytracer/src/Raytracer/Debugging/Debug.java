@@ -8,7 +8,9 @@ public class Debug {
 	
 	public static final Log LOG = new Log("Java-Raytracer Debug Log");
 	
-	public static int raysCasted;
+	public static int raysCasted = 0;
+	
+	private static NumberFormat formatter = NumberFormat.getInstance();
 	
 	public static void write(Object obj){
 		if (!consoleEnabled) return;
@@ -17,7 +19,7 @@ public class Debug {
 	}
 	
 	public static void writeLog(){
-		LOG.addFootNote("Rays casted: " + raysCasted);
+		LOG.addFootNote("Rays casted: " + formatter.format(raysCasted));
 		
 		write(LOG);
 	}
