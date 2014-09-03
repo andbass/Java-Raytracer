@@ -18,7 +18,7 @@ public class SimpleRenderer {
 	private double ratio;
 	
 	private int threadCount, threadRenderHeight;
-	private int samples;
+	private int samples, sqrtSamples;
 	
 	/**
 	 * Constructs a SimpleRenderer with a given resolution and
@@ -27,7 +27,7 @@ public class SimpleRenderer {
 	 */
 	public SimpleRenderer(Dimension resolution, Sampler sampler, int threadCount){
 		this.width = resolution.width;  this.height = resolution.height;
-		this.samples = sampler.getSamples();
+		this.samples = sampler.getSamples();  this.sqrtSamples = (int)Math.sqrt(samples);
 		this.ratio = (double)width / height;
 		
 		setThreadCount(threadCount);
@@ -61,7 +61,7 @@ public class SimpleRenderer {
 					pixelColor = pixelColor.add(scene.getColor(result, cam, coords));
 				}
 				pixelColor = pixelColor.descale(samples);
-				image.setRGB(x, y, pixelColor.toAwtColor().getRGB());
+				image.setRGB(x, y, pixelColor.getRGB());
 			}
 		}
 		return image;

@@ -59,6 +59,13 @@ public class Color {
 		return new Color(r, g, b);
 	}
 	
+	public int getRGB(){
+		int r = Math.min(255, Math.max((int)this.r, 0));
+		int g = Math.min(255, Math.max((int)this.g, 0));
+		int b = Math.min(255, Math.max((int)this.b, 0));
+		return ((int)r << 16) | ((int)g << 8) | (int)b;
+	}
+	
 	public java.awt.Color toAwtColor(){
 		Color restrictedColor = this.restrictRange();
 		return new java.awt.Color((int)restrictedColor.r, (int)restrictedColor.g, (int)restrictedColor.b);
