@@ -12,7 +12,7 @@ public class Program {
 
 		JRaytracer raytracer = new JRaytracer("Raytracer (Alt + Enter to fullscreen)",
 											 1280, 720,	
-											 new Grid(4));
+											 new Poseidon(4, 0.1));
 
 		Camera cam = new Camera(new Vec3(0,7,-5), Vec3.FORWARD, Vec3.UP, 60);
 		

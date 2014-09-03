@@ -17,6 +17,8 @@ public class SimpleRenderer {
 	private int width, height;
 	private double ratio;
 	
+	private Sampler sampler;
+	
 	private int threadCount, threadRenderHeight;
 	private int samples, sqrtSamples;
 	
@@ -27,6 +29,7 @@ public class SimpleRenderer {
 	 */
 	public SimpleRenderer(Dimension resolution, Sampler sampler, int threadCount){
 		this.width = resolution.width;  this.height = resolution.height;
+		this.sampler = sampler;
 		this.samples = sampler.getSamples();  this.sqrtSamples = (int)Math.sqrt(samples);
 		this.ratio = (double)width / height;
 		
@@ -47,8 +50,13 @@ public class SimpleRenderer {
 			{
 				Color pixelColor = Color.BLACK;
 				for (int sample = 1; sample <= samples; sample++){
-					double sX = (double)x / width;
-					double sY = (double)(height - y) / height;
+					Vec2 mod = sampler.getModXY(1, 1);
+					
+					double tX = x + mod.x;
+					double tY = y + mod.y;
+					
+					double sX = (double)tX / width;
+					double sY = (double)(height - tY) / height;
 					
 					double ndcX = (sX * 2 - 1) * ratio * cam.getFovMultipler();
 					double ndcY = (sY * 2 - 1) * cam.getFovMultipler();
