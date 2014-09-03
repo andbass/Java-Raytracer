@@ -3,13 +3,13 @@ package Raytracer.Swing;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
 
 import Raytracer.Core.Camera;
 import Raytracer.Core.Scene;
+import Raytracer.Debugging.Debug;
 import Raytracer.Math.Color;
 import Raytracer.Renderers.SimpleRenderer;
 import Raytracer.Sampling.Sampler;
@@ -36,13 +36,15 @@ public class JRaytracerViewport extends JComponent {
 			image = getWaitImage();
 		}
 		
-		public void paint(Graphics g){
-			super.paint(g);
+		public void paintComponent(Graphics g){
+			super.paintComponent(g);
 			g.drawImage(image, 0, 0, null);
 		}
 		
+		// TODO Fix fullscreen
 		public void render(Scene scene, Camera cam){
 			image = getWaitImage("Please wait: Now rendering...");
+			this.repaint();
 			
 			int height = getHeight();
 			int width = getWidth();
@@ -53,10 +55,9 @@ public class JRaytracerViewport extends JComponent {
 				{
 					Color pixelColor = renderer.getPixel(x, y, scene, cam);
 					image.setRGB(x, y, pixelColor.getRGB());
-					this.repaint();
+					repaint();
 				}
 			}
-			
 		}
 		
 		private BufferedImage getWaitImage(){
@@ -82,6 +83,7 @@ public class JRaytracerViewport extends JComponent {
 		public void setPreferredSize(Dimension resolution){
 			super.setPreferredSize(resolution);
 			this.resolution = resolution;
+			
 			renderer = new SimpleRenderer(resolution, sampler, threadCount);
 		}
 		

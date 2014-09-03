@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 
 import Raytracer.Core.Camera;
 import Raytracer.Core.Scene;
+import Raytracer.Debugging.Debug;
 import Raytracer.Sampling.Sampler;
 
 
@@ -32,6 +33,9 @@ public class JRaytracer extends JFrame implements KeyListener {
 	private Scene lastScene;
 	private Camera lastCam;
 	
+	private Sampler sampler;
+	private int threadCount;
+	
 	public JRaytracer(String title, int width, int height, Sampler sampler){
 		this(title, new Dimension(width, height), sampler, 1);
 	}
@@ -45,6 +49,9 @@ public class JRaytracer extends JFrame implements KeyListener {
 		this.resolution = resolution;
 		viewport = new JRaytracerViewport(resolution, sampler, threadCount);
 		this.add(viewport);
+		
+		this.sampler = sampler;
+		this.threadCount = threadCount;
 		
 		this.addKeyListener(this);
 		
@@ -78,20 +85,27 @@ public class JRaytracer extends JFrame implements KeyListener {
 
 	public void switchFullscren(){
 		dispose(); // Make frame undisplayable to allow for decoration change
+		
+		Dimension resolution;
 		if (fullscreen) // go windowed
 		{
 			setUndecorated(false);
 			monitor.setFullScreenWindow(null);
-			viewport.setPreferredSize(resolution);
+			resolution = this.resolution;
 		} 
 		else // go fullscreen
 		{
 			setUndecorated(true);
 			monitor.setFullScreenWindow(this);
-			viewport.setPreferredSize(getContentPane().getSize()); // get the fullscreen resolution now
+			resolution = getContentPane().getSize(); // get the fullscreen resolution now
 		}
-		viewport.render(lastScene, lastCam);
+		this.remove(viewport);
+		viewport = new JRaytracerViewport(resolution, sampler, threadCount);
+		this.add(viewport);
 		setVisible(true);
+		
+		viewport.render(lastScene, lastCam);
+
 		fullscreen = !fullscreen;
 		
 	}
