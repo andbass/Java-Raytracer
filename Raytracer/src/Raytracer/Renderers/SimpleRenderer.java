@@ -41,38 +41,44 @@ public class SimpleRenderer {
 	 */
 	public Image render(Scene scene, Camera cam){
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-		
-		Vec2 coords = new Vec2(0,0);
+
 		
 		for (int y = 0; y < height; y++)
 		{
 			for (int x = 0; x < width; x++)
 			{
-				Color pixelColor = Color.BLACK;
-				for (int sample = 1; sample <= samples; sample++){
-					Vec2 mod = sampler.getModXY(1, 1);
-					
-					double tX = x + mod.x;
-					double tY = y + mod.y;
-					
-					double sX = (double)tX / width;
-					double sY = (double)(height - tY) / height;
-					
-					double ndcX = (sX * 2 - 1) * ratio * cam.getFovMultipler();
-					double ndcY = (sY * 2 - 1) * cam.getFovMultipler();
-					coords.set(sX*ratio, sY);
-					
-					Ray camRay = cam.getRay(ndcX, ndcY);
-					
-					RaycastResult result = scene.raycast(camRay);
-							
-					pixelColor = pixelColor.add(scene.getColor(result, cam, coords));
-				}
-				pixelColor = pixelColor.descale(samples);
+				Color pixelColor = getPixel(x, y, scene, cam);
 				image.setRGB(x, y, pixelColor.getRGB());
 			}
 		}
 		return image;
+	}
+	
+	public Color getPixel(int x, int y, Scene scene, Camera cam){
+		Color pixelColor = Color.BLACK;
+		Vec2 coords = new Vec2(0,0);
+		
+		for (int sample = 1; sample <= samples; sample++){
+			Vec2 mod = sampler.getModXY(1, 1);
+			
+			double tX = x + mod.x;
+			double tY = y + mod.y;
+			
+			double sX = (double)tX / width;
+			double sY = (double)(height - tY) / height;
+			
+			double ndcX = (sX * 2 - 1) * ratio * cam.getFovMultipler();
+			double ndcY = (sY * 2 - 1) * cam.getFovMultipler();
+			coords.set(sX*ratio, sY);
+			
+			Ray camRay = cam.getRay(ndcX, ndcY);
+			
+			RaycastResult result = scene.raycast(camRay);
+					
+			pixelColor = pixelColor.add(scene.getColor(result, cam, coords));
+		}
+		pixelColor = pixelColor.descale(samples);
+		return pixelColor;
 	}
 	
 	

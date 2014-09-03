@@ -1,6 +1,5 @@
 package Raytracer.Swing;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -11,14 +10,16 @@ import javax.swing.JComponent;
 
 import Raytracer.Core.Camera;
 import Raytracer.Core.Scene;
+import Raytracer.Math.Color;
 import Raytracer.Renderers.SimpleRenderer;
 import Raytracer.Sampling.Sampler;
+
 
 public class JRaytracerViewport extends JComponent {
 		
 		private static final long serialVersionUID = 1L;
 		
-		private Image image; // the render from the SimpleRenderer 
+		private BufferedImage image; // the render from the SimpleRenderer 
 		private SimpleRenderer renderer;
 		private Dimension resolution;
 		
@@ -44,24 +45,35 @@ public class JRaytracerViewport extends JComponent {
 			image = getWaitImage("Please wait: Now rendering...");
 			super.repaint();
 			
-			image = renderer.render(scene, cam);
-			super.repaint();
+			int height = getHeight();
+			int width = getWidth();
+			
+			for (int y = 0; y < height; y++)
+			{
+				for (int x = 0; x < width; x++)
+				{
+					Color pixelColor = renderer.getPixel(x, y, scene, cam);
+					image.setRGB(x, y, pixelColor.getRGB());
+					super.repaint();
+				}
+			}
+			
 		}
 		
-		private Image getWaitImage(){
+		private BufferedImage getWaitImage(){
 			return getWaitImage("");
 		}
 		
-		private Image getWaitImage(String string) {
+		private BufferedImage getWaitImage(String string) {
 			image = new BufferedImage(resolution.width, resolution.height, BufferedImage.TYPE_INT_RGB);
 			Graphics g = image.getGraphics();
-			g.setColor(Color.BLACK);
+			g.setColor(Color.BLACK.toAwtColor());
 			g.fillRect(0, 0, resolution.width, resolution.height);
 			
 			int size = (resolution.width + resolution.height) / 50;
 			Font font = new Font(Font.MONOSPACED, Font.PLAIN, size);
 			
-			g.setColor(Color.WHITE);
+			g.setColor(Color.WHITE.toAwtColor());
 			g.setFont(font);
 			
 			g.drawString(string, 15, resolution.height-15);

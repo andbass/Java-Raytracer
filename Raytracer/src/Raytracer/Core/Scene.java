@@ -70,7 +70,7 @@ public class Scene {
 			
 			RaycastResult shadowResult = this.raycast(shadowRay);
 			
-			if (!shadowResult.hit || shadowResult.distance > distToLight || shadowResult.hitObject == hitObj){
+			if (!shadowResult.hit || shadowResult.distance > distToLight){
 				Color lightDiffuseIntensity = light.getDiffuse().descale(255);
 				
 				// Diffuse
