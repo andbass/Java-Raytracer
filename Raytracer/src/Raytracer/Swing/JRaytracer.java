@@ -90,8 +90,8 @@ public class JRaytracer extends JFrame implements KeyListener {
 			monitor.setFullScreenWindow(this);
 			viewport.setPreferredSize(getContentPane().getSize()); // get the fullscreen resolution now
 		}
-		setVisible(true);
 		viewport.render(lastScene, lastCam);
+		setVisible(true);
 		fullscreen = !fullscreen;
 		
 	}
