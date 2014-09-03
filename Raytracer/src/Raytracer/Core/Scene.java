@@ -44,6 +44,7 @@ public class Scene {
 		return getObjectColor(result, camera);
 	}
 	
+	// TODO Put lighting calcuations into IlluminationModel class.
 	protected Color getObjectColor(RaycastResult result, Camera camera){
 		List<Geometry> tempGeomList = new ArrayList<Geometry>(geomList);
 		

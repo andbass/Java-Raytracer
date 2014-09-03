@@ -12,7 +12,7 @@ public class RenderTask implements Callable<String> {
 	}
 	
 	public String call() throws Exception {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 	

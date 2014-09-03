@@ -11,7 +11,7 @@ public class Grid implements Sampler {
 		setSamples(sampleSize);
 	}
 	
-	public Vec2 getModXY(int x, int y) {
+	public Vec2 getModXY(double x, double y) {
 		return new Vec2(subPixelSize * x, subPixelSize * y);
 	}
 

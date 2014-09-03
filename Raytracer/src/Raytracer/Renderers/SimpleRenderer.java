@@ -8,6 +8,7 @@ import Raytracer.Core.Camera;
 import Raytracer.Core.Ray;
 import Raytracer.Core.RaycastResult;
 import Raytracer.Core.Scene;
+import Raytracer.Debugging.Debug;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec2;
 import Raytracer.Sampling.Sampler;
@@ -17,6 +18,7 @@ public class SimpleRenderer {
 	private double ratio;
 	
 	private int threadCount, threadRenderHeight;
+	private int samples;
 	
 	/**
 	 * Constructs a SimpleRenderer with a given resolution and
@@ -25,6 +27,7 @@ public class SimpleRenderer {
 	 */
 	public SimpleRenderer(Dimension resolution, Sampler sampler, int threadCount){
 		this.width = resolution.width;  this.height = resolution.height;
+		this.samples = sampler.getSamples();
 		this.ratio = (double)width / height;
 		
 		setThreadCount(threadCount);
@@ -43,18 +46,21 @@ public class SimpleRenderer {
 			for (int x = 0; x < width; x++)
 			{
 				Color pixelColor = Color.BLACK;
-				double sX = (double)x / width;
-				double sY = (double)(height - y) / height;
-				
-				double ndcX = (sX * 2 - 1) * ratio * cam.getFovMultipler();
-				double ndcY = (sY * 2 - 1) * cam.getFovMultipler();
-				coords.set(sX*ratio, sY);
-				
-				Ray camRay = cam.getRay(ndcX, ndcY);
-				
-				RaycastResult result = scene.raycast(camRay);
-						
-				pixelColor = pixelColor.add(scene.getColor(result, cam, coords));
+				for (int sample = 1; sample <= samples; sample++){
+					double sX = (double)x / width;
+					double sY = (double)(height - y) / height;
+					
+					double ndcX = (sX * 2 - 1) * ratio * cam.getFovMultipler();
+					double ndcY = (sY * 2 - 1) * cam.getFovMultipler();
+					coords.set(sX*ratio, sY);
+					
+					Ray camRay = cam.getRay(ndcX, ndcY);
+					
+					RaycastResult result = scene.raycast(camRay);
+							
+					pixelColor = pixelColor.add(scene.getColor(result, cam, coords));
+				}
+				pixelColor = pixelColor.descale(samples);
 				image.setRGB(x, y, pixelColor.toAwtColor().getRGB());
 			}
 		}
