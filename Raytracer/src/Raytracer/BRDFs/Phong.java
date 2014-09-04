@@ -17,6 +17,8 @@ import Raytracer.Math.Vec3;
 
 public class Phong extends BRDF {
 	
+	private int maxReflectiveIndex = 5;
+	
 	public Phong(){
 		this(FlatColor.BLACK);
 	}
@@ -33,6 +35,7 @@ public class Phong extends BRDF {
 	}
 		
 	private Color getObjectColor(RaycastResult result, Scene scene, Camera cam) {
+		
 		List<Geometry> tempGeomList = new ArrayList<Geometry>(scene.geomList);
 		
 		Color pointColor = Color.BLACK;
@@ -80,6 +83,7 @@ public class Phong extends BRDF {
 				scaledSpecular = scaledSpecular.mul(filter);
 				
 				pointColor = pointColor.add(scaledSpecular);
+				
 			}
 		}
 

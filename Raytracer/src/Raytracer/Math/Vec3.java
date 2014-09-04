@@ -61,6 +61,10 @@ public class Vec3 {
 		return new Vec3(this.x / length, this.y / length, this.z / length);
 	}
 	
+	public Vec3 dir(Vec3 vec){
+		return vec.sub(this).normalize();
+	}
+	
 	public Vec3 negate(){
 		return new Vec3(-this.x, -this.y, -this.z);
 	}
