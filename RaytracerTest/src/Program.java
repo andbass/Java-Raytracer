@@ -16,7 +16,7 @@ public class Program {
 											 new Phong(Gradient.DAY_SKY),
 											 new Poseidon(9, 0.2));
 
-		Camera cam = new Camera(new Vec3(0,7,-5), Vec3.FORWARD, Vec3.UP, 60);
+		Camera cam = new Camera(Vec3.ZERO, Vec3.FORWARD, Vec3.UP, 60);
 		
 
 		Debug.LOG.start("Test render");
