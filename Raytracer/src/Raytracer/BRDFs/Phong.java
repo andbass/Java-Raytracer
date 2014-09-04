@@ -9,12 +9,17 @@ import Raytracer.Core.RaycastResult;
 import Raytracer.Core.Scene;
 import Raytracer.Geometry.Geometry;
 import Raytracer.Lights.Light;
+import Raytracer.Materials.FlatColor;
 import Raytracer.Materials.Material;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec2;
 import Raytracer.Math.Vec3;
 
 public class Phong extends BRDF {
+	
+	public Phong(){
+		this(FlatColor.BLACK);
+	}
 	
 	public Phong(Material mat){
 		super(mat);
@@ -81,5 +86,4 @@ public class Phong extends BRDF {
 		scene.geomList = tempGeomList;
 		return pointColor.add(objAmbient);	
 	}
-
 }
