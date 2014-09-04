@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
+import Raytracer.BRDFs.BRDF;
 import Raytracer.Core.Camera;
 import Raytracer.Core.Scene;
 import Raytracer.Sampling.Sampler;
@@ -33,20 +34,21 @@ public class JRaytracer extends JFrame implements KeyListener {
 	private Camera lastCam;
 	
 	private Sampler sampler;
+	private BRDF brdf;
 	private int threadCount;
 	
-	public JRaytracer(String title, int width, int height, Sampler sampler){
-		this(title, new Dimension(width, height), sampler, 1);
+	public JRaytracer(String title, int width, int height, BRDF brdf, Sampler sampler){
+		this(title, new Dimension(width, height), brdf, sampler, 1);
 	}
 	
-	public JRaytracer(String title, Dimension resolution, Sampler sampler, int threadCount){
+	public JRaytracer(String title, Dimension resolution, BRDF brdf, Sampler sampler, int threadCount){
 		super();
 		
 		localGE = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		monitor = localGE.getDefaultScreenDevice();
 		
 		this.resolution = resolution;
-		viewport = new JRaytracerViewport(resolution, sampler, threadCount);
+		viewport = new JRaytracerViewport(resolution, brdf, sampler, threadCount);
 		this.add(viewport);
 		
 		this.sampler = sampler;
@@ -99,7 +101,7 @@ public class JRaytracer extends JFrame implements KeyListener {
 			resolution = getContentPane().getSize(); // get the fullscreen resolution now
 		}
 		this.remove(viewport);
-		viewport = new JRaytracerViewport(resolution, sampler, threadCount);
+		viewport = new JRaytracerViewport(resolution, brdf, sampler, threadCount);
 		this.add(viewport);
 		setVisible(true);
 		

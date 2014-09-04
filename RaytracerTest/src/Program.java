@@ -1,6 +1,7 @@
 import Raytracer.Core.*;
 import Raytracer.Debugging.*;
 import Raytracer.Geometry.*;
+import Raytracer.BRDFs.*;
 import Raytracer.Lights.*;
 import Raytracer.Materials.*;
 import Raytracer.Math.*;
@@ -11,8 +12,9 @@ public class Program {
 	public static void main(String[] args) throws InterruptedException{
 
 		JRaytracer raytracer = new JRaytracer("Raytracer (Alt + Enter to fullscreen)",
-											 1700, 980,	
-											 new Poseidon(1, 0));
+											 1280, 720,	
+											 new Phong(FlatColor.BLACK),
+											 new Poseidon(1, 0.5));
 
 		Camera cam = new Camera(new Vec3(0,7,-5), Vec3.FORWARD, Vec3.UP, 60);
 		
@@ -29,8 +31,6 @@ public class Program {
 		scene.addGeometry(sphere, sphere2, plane);
 		scene.addLight(light, light2);
 
-		scene.setBGMaterial(FlatColor.BLACK);
-		
 		Debug.LOG.start("Test render");
 		raytracer.render(scene, cam);
 		Debug.LOG.end();
