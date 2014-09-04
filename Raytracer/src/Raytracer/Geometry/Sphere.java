@@ -17,6 +17,7 @@ public class Sphere extends Geometry {
 		setRadius(radius);
 		
 		super.setMaterial(mat);
+
 	}
 	
 	public RaycastResult collide(Ray ray) {

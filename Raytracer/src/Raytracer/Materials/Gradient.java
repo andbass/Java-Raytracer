@@ -17,7 +17,6 @@ public class Gradient extends Material {
 		super(0,0);
 		this.from = from;  this.to = to;
 		diff = to.sub(from);
-		Debug.write(diff);
 	}
 
 	public Color getAmbient(Vec3 point) {

@@ -15,12 +15,12 @@ public class Program {
 											 1280, 720,	
 											 new Phong(Gradient.DAY_SKY),
 											 new Poseidon(9, 0.2));
-
-		Camera cam = new Camera(Vec3.ZERO, Vec3.FORWARD, Vec3.UP, 60);
 		
-
+		Scene scene = ExampleScenes.TWO_SPHERES_PLANE;
+		Camera camera = ExampleScenes.getCamera(scene);
+		
 		Debug.LOG.start("Test render");
-		raytracer.render(ExampleScenes.TWO_SPHERES_PLANE, cam);
+		raytracer.render(scene, camera);
 		Debug.LOG.end();
 		
 		
