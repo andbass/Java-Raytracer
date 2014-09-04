@@ -35,6 +35,7 @@ public class Program {
 		raytracer.render(scene, cam);
 		Debug.LOG.end();
 		
+		
 		Debug.writeLog();
 	}
 

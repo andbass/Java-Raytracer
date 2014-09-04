@@ -35,7 +35,7 @@ public class Log {
 		depth--;
 	}
 	
-	public void addFootNote(String note) { this.footNote += note + "\n"; }
+	public void footNote(String note) { this.footNote += note + "\n"; }
 	
 	public String toString(){
 		String contents = "";

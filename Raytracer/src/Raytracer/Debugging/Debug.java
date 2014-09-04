@@ -19,7 +19,7 @@ public class Debug {
 	}
 	
 	public static void writeLog(){
-		LOG.addFootNote("Rays casted: " + formatter.format(raysCasted));
+		LOG.footNote("Rays casted: " + formatter.format(raysCasted));
 		
 		write(LOG);
 	}
