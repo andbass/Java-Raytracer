@@ -1,8 +1,6 @@
 package Raytracer.Materials;
 
 import Raytracer.Math.Color;
-import Raytracer.Math.Vec2;
-import Raytracer.Math.Vec3;
 
 /**
  * A Material represents a two dimensinal surface that is wrapped around Geometry

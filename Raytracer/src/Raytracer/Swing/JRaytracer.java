@@ -10,7 +10,6 @@ import javax.swing.JFrame;
 
 import Raytracer.Core.Camera;
 import Raytracer.Core.Scene;
-import Raytracer.Debugging.Debug;
 import Raytracer.Sampling.Sampler;
 
 

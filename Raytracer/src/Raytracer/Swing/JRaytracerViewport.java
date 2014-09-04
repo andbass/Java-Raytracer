@@ -9,7 +9,6 @@ import javax.swing.JComponent;
 
 import Raytracer.Core.Camera;
 import Raytracer.Core.Scene;
-import Raytracer.Debugging.Debug;
 import Raytracer.Math.Color;
 import Raytracer.Renderers.SimpleRenderer;
 import Raytracer.Sampling.Sampler;

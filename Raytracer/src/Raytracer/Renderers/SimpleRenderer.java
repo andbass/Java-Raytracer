@@ -8,7 +8,6 @@ import Raytracer.Core.Camera;
 import Raytracer.Core.Ray;
 import Raytracer.Core.RaycastResult;
 import Raytracer.Core.Scene;
-import Raytracer.Debugging.Debug;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec2;
 import Raytracer.Sampling.Sampler;
