@@ -18,10 +18,14 @@ public class Program {
 
 		Camera cam = new Camera(new Vec3(0,7,-5), Vec3.FORWARD, Vec3.UP, 60);
 		
+		// Material
+		Checkered reflectiveSurface = new Checkered(1000, Color.WHITE, Color.DARK_BLUE);
+		reflectiveSurface.setReflectivity(5);
+		
 		// Geometry
 		Sphere sphere 	= new Sphere(new Vec3(0,7,20), 7, Checkered.WHITE_RED);
 		Sphere sphere2 	= new Sphere(new Vec3(-20, 5, 30), 5, FlatColor.MAGNETA);
-		Plane plane 	= new Plane(Vec3.ZERO, Vec3.UP, Checkered.LARGE_YELLOW_GREEN);
+		Plane plane 	= new Plane(Vec3.ZERO, Vec3.UP, reflectiveSurface);
 
 		// Lights
 		PointLight light 	= new PointLight(new Vec3(0,50,0), Color.WHITE);

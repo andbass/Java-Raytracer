@@ -4,6 +4,7 @@ public class Color {
     public static final Color RED    		= new Color(220,0,0);
 	public static final Color GREEN	 		= new Color(0,220,0);
 	public static final Color BLUE	 		= new Color(0,0,220);
+	public static final Color DARK_BLUE		= new Color(0,30,65);
 	public static final Color YELLOW 		= new Color(220,220,0);
 	public static final Color ORANGE 		= new Color(175,95,0);
 	public static final Color MAGNETA 		= new Color(220,0,200);
