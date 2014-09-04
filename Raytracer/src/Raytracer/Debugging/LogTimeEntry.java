@@ -26,6 +26,7 @@ public class LogTimeEntry extends LogEntry {
 	
 	public String toString(){
 		long nano = endTime - startTime;
+		
 		String sec = String.format("%.5g", nano * 1e-9);
 		
 		return super.toString() + " - " + sec + "s";

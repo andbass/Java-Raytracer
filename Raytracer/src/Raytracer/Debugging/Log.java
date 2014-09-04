@@ -30,6 +30,8 @@ public class Log {
 
 	public void end(){
 		trackedEntries.get(depth).finish();
+		trackedEntries.remove(depth);
+		
 		depth--;
 	}
 	

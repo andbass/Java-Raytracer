@@ -8,10 +8,10 @@ import Raytracer.Sampling.*;
 import Raytracer.Swing.*;
 
 public class Program {
-	public static void main(String[] args){
+	public static void main(String[] args) throws InterruptedException{
 
 		JRaytracer raytracer = new JRaytracer("Raytracer (Alt + Enter to fullscreen)",
-											 1280, 720,	
+											 1700, 980,	
 											 new Poseidon(1, 0));
 
 		Camera cam = new Camera(new Vec3(0,7,-5), Vec3.FORWARD, Vec3.UP, 60);
