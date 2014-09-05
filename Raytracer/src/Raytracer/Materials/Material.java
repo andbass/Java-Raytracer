@@ -1,7 +1,6 @@
 package Raytracer.Materials;
 
 import Raytracer.Math.Color;
-import Raytracer.Math.Vec2;
 import Raytracer.Math.Vec3;
 
 /**

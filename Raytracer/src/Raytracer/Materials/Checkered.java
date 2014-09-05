@@ -21,11 +21,11 @@ public class Checkered extends Material {
 	private double size; 
 	
 	public Checkered(double size, Checkered checkered){
-		this(size, checkered.getAmbient(Vec3.ZERO), checkered.getFirstDiffuse(), checkered.getSecondDiffuse(), checkered.getSpecular(Vec3.ZERO), 5, 5);
+		this(size, checkered.getAmbient(Vec3.ZERO), checkered.getFirstDiffuse());
 	}
 	
 	public Checkered(double size, Color diffuse1, Color diffuse2){
-		this(size, Color.BLACK, diffuse1, diffuse2, Color.WHITE, 5, 5);
+		this(size, Color.BLACK, diffuse1, diffuse2, Color.WHITE, 5, 0);
 	}
 
 	public Checkered(double size, Color ambient, Color diffuse1, Color diffuse2, Color specular, double shininess, double reflectivity){

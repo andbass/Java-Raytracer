@@ -30,10 +30,12 @@ public class Log {
 
 	public void end(){
 		trackedEntries.get(depth).finish();
+		trackedEntries.remove(depth);
+		
 		depth--;
 	}
 	
-	public void addFootNote(String note) { this.footNote += note + "\n"; }
+	public void footNote(String note) { this.footNote += note + "\n"; }
 	
 	public String toString(){
 		String contents = "";
