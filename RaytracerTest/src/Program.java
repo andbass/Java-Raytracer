@@ -11,7 +11,7 @@ public class Program {
 
 		JRaytracer raytracer = new JRaytracer("Raytracer (Alt + Enter to fullscreen)",
 											 1280, 720,	
-											 new Phong(Gradient.DUSK_SKY),
+											 new Phong(Gradient.PURPLE_BLUE),
 											 new Poseidon(1, 0));
 		
 		Scene scene = ExampleScenes.TWO_SPHERES_PLANE;
