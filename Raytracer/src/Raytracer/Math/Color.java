@@ -4,12 +4,14 @@ public class Color {
     public static final Color RED    		= new Color(220,0,0);
 	public static final Color GREEN	 		= new Color(0,220,0);
 	public static final Color BLUE	 		= new Color(0,0,220);
+	public static final Color DARK_BLUE		= new Color(0,30,65);
 	public static final Color YELLOW 		= new Color(220,220,0);
 	public static final Color ORANGE 		= new Color(175,95,0);
 	public static final Color MAGNETA 		= new Color(220,0,200);
 	public static final Color WHITE	 		= new Color(255,255,255);
 	public static final Color GREY			= new Color(128,128,128);
 	public static final Color LIGHT_GREY 	= new Color(200,200,200);
+	public static final Color DARK_GREY 	= new Color(64,64,64);
 	public static final Color BLACK 		= new Color(0,0,0);
 	public static final Color OFF_WHITE 	= new Color(210, 200, 190);
 	
@@ -56,6 +58,13 @@ public class Color {
 		double g = Math.min(Math.max(this.g, 0), 255);
 		double b = Math.min(Math.max(this.b, 0), 255);
 		return new Color(r, g, b);
+	}
+	
+	public int getRGB(){
+		int r = Math.min(255, Math.max((int)this.r, 0));
+		int g = Math.min(255, Math.max((int)this.g, 0));
+		int b = Math.min(255, Math.max((int)this.b, 0));
+		return ((int)r << 16) | ((int)g << 8) | (int)b;
 	}
 	
 	public java.awt.Color toAwtColor(){

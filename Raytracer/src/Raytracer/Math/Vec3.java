@@ -2,7 +2,25 @@ package Raytracer.Math;
 
 public class Vec3 {
 
-	public static final Vec3 ZERO = new Vec3(0,0,0);
+	/**
+	 * A Vec3 with every component equal to zero.
+	 */
+	public static final Vec3 ZERO		= new Vec3(0,0,0);
+	
+	/**
+	 * A Vec3 facing upwards (in world space)
+	 */
+	public static final Vec3 UP			= new Vec3(0,1,0);
+	
+	/**
+	 * A Vec3 facing right (in world space)
+	 */
+	public static final Vec3 RIGHT		= new Vec3(1,0,0);
+	
+	/**
+	 * A Vec3 facing forwards (in world space)
+	 */
+	public static final Vec3 FORWARD	= new Vec3(0,0,1);
 	
 	public double x, y, z;
 	
@@ -41,6 +59,10 @@ public class Vec3 {
 	public Vec3 normalize(){
 		double length = length();
 		return new Vec3(this.x / length, this.y / length, this.z / length);
+	}
+	
+	public Vec3 dir(Vec3 vec){
+		return vec.sub(this).normalize();
 	}
 	
 	public Vec3 negate(){

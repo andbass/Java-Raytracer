@@ -1,85 +1,88 @@
 package Raytracer.Renderers;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.text.NumberFormat;
 
+import Raytracer.BRDFs.BRDF;
 import Raytracer.Core.Camera;
-import Raytracer.Core.Debug;
 import Raytracer.Core.Ray;
 import Raytracer.Core.RaycastResult;
 import Raytracer.Core.Scene;
+import Raytracer.Math.Color;
 import Raytracer.Math.Vec2;
+import Raytracer.Sampling.Sampler;
 
 public class SimpleRenderer {
 	private int width, height;
 	private double ratio;
 	
-	private int samples, sqrtSamples;
-	private double subPixelSize;
+	private Sampler sampler;
+	private BRDF brdf;
 	
 	private int threadCount, threadRenderHeight;
-
-	private int raysCasted = 0;
+	private int samples, sqrtSamples;
 	
 	/**
 	 * Constructs a SimpleRenderer with a given resolution and
 	 * number of samples. The number of samples must be a perfect square
 	 * as to properly subdivide a pixel (which we assume to be 1x1 units)
 	 */
-	public SimpleRenderer(Dimension resolution, int samples, int threadCount){
+	public SimpleRenderer(Dimension resolution, BRDF brdf, Sampler sampler, int threadCount){
 		this.width = resolution.width;  this.height = resolution.height;
+		this.sampler = sampler;
+		this.brdf = brdf;
+		this.samples = sampler.getSamples();  this.sqrtSamples = (int)Math.sqrt(samples);
 		this.ratio = (double)width / height;
 		
 		setThreadCount(threadCount);
-		setSamples(samples);
-
 	}
 	
 	/**
 	 * Renders a scene using the provided camera.
 	 */
 	public Image render(Scene scene, Camera cam){
-		NumberFormat formatter = NumberFormat.getInstance();
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-		
-		Vec2 coords = new Vec2(0,0);
+
 		
 		for (int y = 0; y < height; y++)
 		{
 			for (int x = 0; x < width; x++)
 			{
-				double ndcX = ((double)x / width * 2 - 1) * ratio * cam.getFovMultipler();
-				double ndcY = ((double)(height-y) / height * 2 - 1) * cam.getFovMultipler();
-				coords.set(ndcX, ndcY);
-				
-				Ray camRay = cam.getRay(ndcX, ndcY);
-				
-				RaycastResult result = scene.raycast(camRay);
-				raysCasted++;
-				
-				Color pixelColor = scene.getColor(result, cam, coords).toAwtColor();
+				Color pixelColor = getPixel(x, y, scene, cam);
 				image.setRGB(x, y, pixelColor.getRGB());
 			}
 		}
-		
-		Debug.Write(formatter.format(raysCasted));
 		return image;
 	}
 	
-	public int 	getSamples() { return this.samples; }
-	
-	public void setSamples(int samples) { 
-		this.sqrtSamples = (int)Math.sqrt(samples);
+	public Color getPixel(int x, int y, Scene scene, Camera cam){
+		Color pixelColor = Color.BLACK;
+		Vec2 coords = new Vec2(0,0);
 		
-		if (sqrtSamples*sqrtSamples != samples){  			
-			throw new IllegalArgumentException("The number of samples to be a perfect square, as the supersampling uses a square grid to cast additional rays");
+		for (int sample = 1; sample <= samples; sample++){
+			Vec2 mod = sampler.getModXY(1, 1);
+			
+			double tX = x + mod.x;
+			double tY = y + mod.y;
+			
+			double sX = (double)tX / width;
+			double sY = (double)(height - tY) / height;
+			
+			double ndcX = (sX * 2 - 1) * ratio * cam.getFovMultipler();
+			double ndcY = (sY * 2 - 1) * cam.getFovMultipler();
+			coords.set(sX*ratio, sY);
+			
+			Ray camRay = cam.getRay(ndcX, ndcY);
+			
+			RaycastResult result = scene.raycast(camRay);
+					
+			pixelColor = pixelColor.add(brdf.getColor(result, scene, cam, coords));
 		}
-		this.samples 		= samples;
-	//	this.subPixelSize 	= 1.0 / sqrtSamples; 
+		pixelColor = pixelColor.descale(samples);
+		return pixelColor;
 	}
+	
 	
 	public int getThreadCount() { return threadCount; }
 	

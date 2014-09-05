@@ -8,33 +8,44 @@ import Raytracer.Math.Vec3;
 
 public class Plane extends Geometry {
 
-	public Plane(Material mat){
+	private Vec3 pos, normal;
+	
+	public Plane(Vec3 pos, Vec3 normal, Material mat){
 		super.setMaterial(mat);
+		this.pos = pos;  this.normal = normal.normalize();
 	}
 	
+	public void setPos(Vec3 pos) { this.pos = pos; }
+	public void setNormal(Vec3 normal) { this.normal = normal.normalize(); }
+	
 	public RaycastResult collide(Ray ray) {
-		// TODO Auto-generated method stub
-		return null;
+		double denom = ray.dir.dot(this.normal);
+		
+		if (denom < 0){
+			Vec3 relativePos = ray.pos.sub(this.pos);
+			double dist = -relativePos.dot(this.normal);
+			dist /= denom;
+						
+			if (dist < 0) return RaycastResult.FAILURE;
+			return new RaycastResult(true, this, ray.advance(dist), dist);
+		}
+		return RaycastResult.FAILURE;
 	}
 
 	public Color getDiffuse(Vec3 point) {
-		// TODO Auto-generated method stub
-		return null;
+		return material.getDiffuse(point);
 	}
 
 	public Color getAmbient(Vec3 point) {
-		// TODO Auto-generated method stub
-		return null;
+		return material.getAmbient(point);
 	}
 
 	public Color getSpecular(Vec3 point) {
-		// TODO Auto-generated method stub
-		return null;
+		return material.getSpecular(point);
 	}
 
 	public Vec3 getNormal(Vec3 point) {
-		// TODO Auto-generated method stub
-		return null;
+		return normal;
 	}
 
 }

@@ -18,7 +18,7 @@ public class FlatColor extends Material {
 	private Color ambient, diffuse, specular;
 	
 	public FlatColor(Color diffuse){
-		this(diffuse, 5, 5);
+		this(diffuse, 5, 0);
 	}
 	
 	public FlatColor(Color diffuse, double shininess, double reflectivity){

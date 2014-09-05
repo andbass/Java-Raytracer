@@ -1,13 +1,17 @@
 package Raytracer.Swing;
 
-import Raytracer.Core.Camera;
-import Raytracer.Core.Scene;
-
-import javax.swing.*;
-
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import javax.swing.JFrame;
+
+import Raytracer.BRDFs.BRDF;
+import Raytracer.Core.Camera;
+import Raytracer.Core.Scene;
+import Raytracer.Sampling.Sampler;
 
 
 /**
@@ -29,19 +33,26 @@ public class JRaytracer extends JFrame implements KeyListener {
 	private Scene lastScene;
 	private Camera lastCam;
 	
-	public JRaytracer(String title, int width, int height){
-		this(title, new Dimension(width, height));
+	private Sampler sampler;
+	private BRDF brdf;
+	private int threadCount;
+	
+	public JRaytracer(String title, int width, int height, BRDF brdf, Sampler sampler){
+		this(title, new Dimension(width, height), brdf, sampler, 1);
 	}
 	
-	public JRaytracer(String title, Dimension resolution){
+	public JRaytracer(String title, Dimension resolution, BRDF brdf, Sampler sampler, int threadCount){
 		super();
 		
 		localGE = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		monitor = localGE.getDefaultScreenDevice();
 		
 		this.resolution = resolution;
-		viewport = new JRaytracerViewport(resolution);
+		viewport = new JRaytracerViewport(resolution, brdf, sampler, threadCount);
 		this.add(viewport);
+		
+		this.sampler = sampler;
+		this.threadCount = threadCount;
 		
 		this.addKeyListener(this);
 		
@@ -75,20 +86,27 @@ public class JRaytracer extends JFrame implements KeyListener {
 
 	public void switchFullscren(){
 		dispose(); // Make frame undisplayable to allow for decoration change
+		
+		Dimension resolution;
 		if (fullscreen) // go windowed
 		{
 			setUndecorated(false);
 			monitor.setFullScreenWindow(null);
-			viewport.setPreferredSize(resolution);
+			resolution = this.resolution;
 		} 
 		else // go fullscreen
 		{
 			setUndecorated(true);
 			monitor.setFullScreenWindow(this);
-			viewport.setPreferredSize(getContentPane().getSize()); // get the fullscreen resolution now
+			resolution = getContentPane().getSize(); // get the fullscreen resolution now
 		}
+		this.remove(viewport);
+		viewport = new JRaytracerViewport(resolution, brdf, sampler, threadCount);
+		this.add(viewport);
 		setVisible(true);
+		
 		viewport.render(lastScene, lastCam);
+
 		fullscreen = !fullscreen;
 		
 	}

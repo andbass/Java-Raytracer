@@ -1,29 +1,28 @@
-import Raytracer.Core.*;
-import Raytracer.Geometry.*;
-import Raytracer.Lights.*;
-import Raytracer.Materials.*;
-import Raytracer.Math.*;
-import Raytracer.Swing.*;
+import Raytracer.BRDFs.Phong;
+import Raytracer.Core.Camera;
+import Raytracer.Core.Scene;
+import Raytracer.Debugging.Debug;
+import Raytracer.Materials.Gradient;
+import Raytracer.Sampling.Poseidon;
+import Raytracer.Swing.JRaytracer;
 
 public class Program {
 	public static void main(String[] args){
-		JRaytracer raytracer = new JRaytracer("Raytracer (Alt + Enter to fullscreen)", 1280, 720);
 
-		Camera cam = new Camera(Vec3.ZERO, new Vec3(0,0,1), new Vec3(0,1,0), 60);
+		JRaytracer raytracer = new JRaytracer("Raytracer (Alt + Enter to fullscreen)",
+											 1280, 720,	
+											 new Phong(Gradient.DAY_SKY),
+											 new Poseidon(1, 0));
 		
-		// Geometry
-		Sphere sphere = new Sphere(new Vec3(0,0,20), 7, Checkered.WHITE_RED);
-		Sphere sphere2 = new Sphere(new Vec3(-20, -2, 30), 5, FlatColor.MAGNETA);
+		Scene scene = ExampleScenes.TWO_SPHERES_PLANE;
+		Camera camera = ExampleScenes.getCamera(scene);
 		
-		// Lights
-		PointLight light = new PointLight(new Vec3(0,5,-5), Color.WHITE);
+		Debug.LOG.start("Test render");
+		raytracer.render(scene, camera);
+		Debug.LOG.end();
 		
-		Scene scene = new Scene();
-		scene.addGeometry(sphere, sphere2);
-		scene.addLight(light);
 		
-		scene.setBGMaterial(FlatColor.BLACK);
-		raytracer.render(scene, cam);
+		Debug.writeLog();
 	}
 
 }

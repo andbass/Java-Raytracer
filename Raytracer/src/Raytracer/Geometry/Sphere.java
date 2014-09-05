@@ -1,6 +1,5 @@
 package Raytracer.Geometry;
 
-import Raytracer.Core.Debug;
 import Raytracer.Core.Ray;
 import Raytracer.Core.RaycastResult;
 import Raytracer.Materials.Material;
@@ -18,6 +17,7 @@ public class Sphere extends Geometry {
 		setRadius(radius);
 		
 		super.setMaterial(mat);
+
 	}
 	
 	public RaycastResult collide(Ray ray) {
