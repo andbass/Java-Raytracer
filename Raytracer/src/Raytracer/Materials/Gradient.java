@@ -21,14 +21,13 @@ public class Gradient extends Material {
 	}
 
 	public Color getDiffuse(Vec3 point) {
-		double gradientLengths = 1 / colors.length;
-		int index = (int)((1 - point.y) / gradientLengths);
+		double t = 1 - point.y;
+		int index = (int)(t * (colors.length-1));
 
-		Color from = colors[index];  Color to = colors[index];
+		Color from = colors[index];  Color to = colors[index+1];
+		Color diff = to.sub(from);
 
-
-
-		return Color.BLACK;
+		return from.add(diff.scale(t));
 	}
 
 	public Color getSpecular(Vec3 point) {

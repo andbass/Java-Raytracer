@@ -12,7 +12,7 @@ public class Program {
 		JRaytracer raytracer = new JRaytracer("Raytracer (Alt + Enter to fullscreen)",
 											 1280, 720,	
 											 new Phong(Gradient.DUSK_SKY),
-											 new Poseidon(9, 0.5));
+											 new Poseidon(1, 0));
 		
 		Scene scene = ExampleScenes.TWO_SPHERES_PLANE;
 		Camera camera = ExampleScenes.getCamera(scene);
