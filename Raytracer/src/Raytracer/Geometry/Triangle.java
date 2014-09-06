@@ -30,22 +30,21 @@ public class Triangle extends Geometry {
 	}
 
 	public RaycastResult collide(Ray ray) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public Color getDiffuse(Vec3 point) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	public Color getAmbient(Vec3 point) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	public Color getSpecular(Vec3 point) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 

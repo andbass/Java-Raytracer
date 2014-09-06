@@ -11,6 +11,16 @@ public class Texture extends Material {
 	private Color specular;
 	private double ambientMultipler;
 	
+	// TODO Add loading images from filepaths
+	
+	public Texture(String filePath){
+		this(filePath, Color.WHITE);
+	}
+	
+	public Texture(String filePath, Color specular){
+		super(Material.DEFAULT_SHININESS, Material.DEFAULT_REFLECTIVITY);
+	}
+	
 	public Texture(BufferedImage tex){
 		this(tex, Material.DEFAULT_SHININESS, Material.DEFAULT_REFLECTIVITY);
 	}
@@ -49,6 +59,11 @@ public class Texture extends Material {
 	public void setSpecular(Color specular){
 		this.specular = specular;
 	}
+	
+	public void setImage(BufferedImage image) { this.tex = image; }
+	
+	// TODO Set image from filepath
+	public void setImage(String filePath) { }
 	
 	private Color getColorFromTexture(double x, double y){
 		int sX = (int)(x*tex.getWidth());
