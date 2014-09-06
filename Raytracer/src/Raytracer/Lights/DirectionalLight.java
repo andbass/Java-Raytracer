@@ -1,5 +1,6 @@
 package Raytracer.Lights;
 
+import Raytracer.Debugging.Debug;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec3;
 
@@ -9,11 +10,12 @@ public class DirectionalLight implements Light {
 	private Color ambient, diffuse, specular;
 	
 	public DirectionalLight(Vec3 dir, Color diffuse){
-		this(dir, Color.BLACK, diffuse, Color.WHITE);
+		this(dir, Color.WHITE, diffuse, Color.WHITE);
 	}
 	
 	public DirectionalLight(Vec3 dir, Color ambient, Color diffuse, Color specular){
 		this.dirNeg = dir.normalize().negate();
+		Debug.write(dirNeg);
 		this.ambient = ambient;  this.diffuse = diffuse;  this.specular = specular;
 	}
 	

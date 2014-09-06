@@ -7,8 +7,8 @@ import Raytracer.Core.Camera;
 import Raytracer.Core.Ray;
 import Raytracer.Core.RaycastResult;
 import Raytracer.Core.Scene;
+import Raytracer.Debugging.Debug;
 import Raytracer.Geometry.Geometry;
-import Raytracer.Lights.DirectionalLight;
 import Raytracer.Lights.Light;
 import Raytracer.Materials.FlatColor;
 import Raytracer.Materials.Material;
@@ -62,6 +62,7 @@ public class Phong extends BRDF {
 			
 			if (!shadowResult.hit || shadowResult.distance > distToLight){
 				Color lightDiffuseIntensity = light.getDiffuse().descale(255);
+				Color lightSpecularIntensity = light.getSpecular().descale(255);
 				
 				// Diffuse
 				double lambTerm = light.getLambertTerm(normal, pointToLight);
@@ -72,6 +73,7 @@ public class Phong extends BRDF {
 				pointColor = pointColor.add(scaledDiffuse);
 				
 				// Specular
+				
 				Vec3 reflectedLightDir = pointToLight.reflect(normal);
 				Vec3 pointToCam = cam.getPos().sub(hitPoint).normalize();
 				
@@ -81,6 +83,7 @@ public class Phong extends BRDF {
 				Color filter = Color.WHITE.sub(scaledDiffuse).descale(255);
 				Color scaledSpecular = objSpecular.scale(specTerm);
 				scaledSpecular = scaledSpecular.mul(filter);
+				scaledSpecular = scaledSpecular.mul(lightSpecularIntensity);
 				
 				pointColor = pointColor.add(scaledSpecular);
 				

@@ -15,7 +15,7 @@ public class PointLight implements Light {
 	}
 	
 	public PointLight(Vec3 pos, Color diffuse, double intensity){
-		this(pos, diffuse.scale(intensity));
+		this(pos, Color.WHITE.scale(intensity), diffuse.scale(intensity), Color.WHITE.scale(intensity));
 	}
 	
 	public PointLight(Vec3 pos, Color ambient, Color diffuse, Color specular){

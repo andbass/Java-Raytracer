@@ -49,8 +49,7 @@ public class ExampleScenes {
 		EARTH.addGeometry(	new Sphere(new Vec3(0,0,80), 25, earthTexture), 
 							new Sphere(new Vec3(-50,50,120), 10, moonTexture));
 		
-		//EARTH.addLight(	new PointLight(new Vec3(5,5,10), Color.WHITE));
-		EARTH.addLight(	new DirectionalLight(Vec3.UP.negate().sub(Vec3.FORWARD), Color.WHITE));
+		EARTH.addLight(	new PointLight(new Vec3(5,5,10), Color.WHITE));
 		
 		cameraMap.put(EARTH, EARTH_CAMERA);
 		// END EARTH

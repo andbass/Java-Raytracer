@@ -22,13 +22,8 @@ public class Texture extends Material {
 	
 	public Texture(String filePath, Color specular){
 		super(Material.DEFAULT_SHININESS, Material.DEFAULT_REFLECTIVITY);
-		BufferedImage texture = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
-		try {
-			texture = ImageIO.read(new File(filePath));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		this.tex = texture;
+
+		setImage(filePath);
 		this.ambientMultipler = 0.01;
 		this.specular = specular;
 	}
@@ -74,6 +69,16 @@ public class Texture extends Material {
 	}
 	
 	public void setImage(BufferedImage image) { this.tex = image; }
+	
+	public void setImage(String filePath){
+		BufferedImage texture = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+		try {
+			texture = ImageIO.read(new File(filePath));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		this.tex = texture;
+	}
 	
 	private Color getColorFromTexture(double x, double y){
 		int sX = (int)(x*tex.getWidth());
