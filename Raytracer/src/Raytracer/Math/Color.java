@@ -29,6 +29,10 @@ public class Color {
 				Integer.valueOf(hex.substring(5, 7), 16));
 	}
 
+	public Color(int[] rgb){
+		this(rgb[0], rgb[1], rgb[2]);
+	}
+	
 	public Color(java.awt.Color color) {
 		this.r = color.getRed();
 		this.g = color.getGreen();

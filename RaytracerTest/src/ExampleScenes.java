@@ -7,6 +7,7 @@ import Raytracer.Geometry.Sphere;
 import Raytracer.Lights.PointLight;
 import Raytracer.Materials.Checkered;
 import Raytracer.Materials.FlatColor;
+import Raytracer.Materials.Metal;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec3;
 
@@ -25,7 +26,7 @@ public class ExampleScenes {
 		// TWO_SPHERES_PLANE
 				
 		// Geometry
-		Sphere sphere 	= new Sphere(new Vec3(0,7,20), 7, Checkered.WHITE_RED);
+		Sphere sphere 	= new Sphere(new Vec3(0,7,20), 7, Metal.GOLD);
 		Sphere sphere2 	= new Sphere(new Vec3(-20, 5, 30), 5, FlatColor.MAGNETA);
 		Plane plane 	= new Plane(Vec3.ZERO, Vec3.UP, Checkered.LARGE_YELLOW_GREEN);
 		

@@ -20,10 +20,8 @@ public class Program {
 		Scene scene = ExampleScenes.TWO_SPHERES_PLANE;
 		Camera camera = ExampleScenes.getCamera(scene);
 		
-		Triangle test = new Triangle(new Vec3(1,0,0), new Vec3(0,1,0), new Vec3(-1,0,0), FlatColor.ORANGE);
-		
 		Debug.LOG.start("Test render");
-		//raytracer.render(scene, camera);
+		raytracer.render(scene, camera);
 		Debug.LOG.end();
 		
 		

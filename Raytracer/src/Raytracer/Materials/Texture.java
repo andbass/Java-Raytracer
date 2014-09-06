@@ -1,12 +1,20 @@
 package Raytracer.Materials;
 
+import java.awt.Image;
+
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec3;
 
 public class Texture extends Material {
 	
-	public Texture(double shininess, double reflectivity){
+	private Image tex;
+	private Color specular;
+	private double ambientMultipler;
+	
+	public Texture(Image tex, double ambientMultipler, double shininess, double reflectivity){
 		super(shininess, reflectivity);
+		this.tex = tex;
+		this.ambientMultipler = ambientMultipler;
 	}
 
 	public Color getAmbient(Vec3 point) {
