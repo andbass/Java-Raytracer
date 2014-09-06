@@ -25,7 +25,7 @@ public class Checkered extends Material {
 	}
 	
 	public Checkered(double size, Color diffuse1, Color diffuse2){
-		this(size, Color.BLACK, diffuse1, diffuse2, Color.WHITE, 5, 0);
+		this(size, Color.BLACK, diffuse1, diffuse2, Color.WHITE, Material.DEFAULT_SHININESS, Material.DEFAULT_REFLECTIVITY);
 	}
 
 	public Checkered(double size, Color ambient, Color diffuse1, Color diffuse2, Color specular, double shininess, double reflectivity){

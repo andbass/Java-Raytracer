@@ -8,6 +8,9 @@ import Raytracer.Math.Vec3;
  */
 public abstract class Material {
 	
+	public static final double DEFAULT_SHININESS 	= 5;
+	public static final double DEFAULT_REFLECTIVITY = 0;
+	
 	protected double shininess, reflectivity;
 	
 	public Material(double shininess, double reflectivity){

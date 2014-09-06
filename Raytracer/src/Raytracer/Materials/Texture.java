@@ -11,23 +11,49 @@ public class Texture extends Material {
 	private Color specular;
 	private double ambientMultipler;
 	
-	public Texture(BufferedImage tex, double ambientMultipler, double shininess, double reflectivity){
+	public Texture(BufferedImage tex){
+		this(tex, Material.DEFAULT_SHININESS, Material.DEFAULT_REFLECTIVITY);
+	}
+	
+	public Texture(BufferedImage tex, Color specular){
+		this(tex, specular, Material.DEFAULT_SHININESS, Material.DEFAULT_REFLECTIVITY);
+	}
+		
+	public Texture(BufferedImage tex, double shiniess, double reflectivity){
+		this(tex, Color.WHITE, shiniess, reflectivity);
+	}
+	
+	public Texture(BufferedImage tex, Color specular, double shininess, double reflectivity){
+		this(tex, 0.01, specular, shininess, reflectivity);
+	}
+	
+	public Texture(BufferedImage tex, double ambientMultipler, Color specular, double shininess, double reflectivity){
 		super(shininess, reflectivity);
 		this.tex = tex;
 		this.ambientMultipler = ambientMultipler;
+		this.specular = specular;
 	}
 
 	public Color getAmbient(Vec3 point) {
-		return null;
+		return getColorFromTexture(point.x, point.y).scale(ambientMultipler);
 	}
 
 	public Color getDiffuse(Vec3 point) {
-		// TODO Auto-generated method stub
-		return null;
+		return getColorFromTexture(point.x, point.y);
 	}
 
 	public Color getSpecular(Vec3 point) {
-		// TODO Auto-generated method stub
-		return null;
+		return specular;
+	}
+	
+	public void setSpecular(Color specular){
+		this.specular = specular;
+	}
+	
+	private Color getColorFromTexture(double x, double y){
+		int sX = (int)(x*tex.getWidth());
+		int sY = (int)(y*tex.getHeight());
+		
+		return new Color(tex.getRGB(sX, sY));
 	}
 }

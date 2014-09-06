@@ -18,9 +18,12 @@ public class Program {
 		Scene scene = ExampleScenes.TWO_SPHERES_PLANE;
 		Camera camera = ExampleScenes.getCamera(scene);
 		
-		int max = 5 | 2;
+		Color test = Color.RED;
+		int code = test.getRGB();
 		
-		Debug.write(max);
+		Color test2 = new Color(code);
+		Debug.write(test2);
+		
 		
 		Debug.LOG.start("Test render");
 		raytracer.render(scene, camera);
