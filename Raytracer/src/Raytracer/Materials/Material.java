@@ -20,31 +20,31 @@ public abstract class Material {
 	 * The ambient color of an object.  Represents lighting from small amounts of light
 	 * scattered around scene.  This color is visible when no light is directly hitting the object.
 	 */
-	public abstract Color 		getAmbient(Vec3 point);
+	public abstract Color 		getAmbient(Vec3 uv);
 	
 	/*
-	 * The diffuse color of a point on the object.
-	 * This is the color of a point where light is directly striking with
+	 * The diffuse color of a uv on the object.
+	 * This is the color of a uv where light is directly striking with
 	 * a relative angle of zero.  Return a color value without doing any
 	 * lighting calcuations.  The renderer will determine the intensity of 
-	 * the color based on the amount of light illuminating the point.
+	 * the color based on the amount of light illuminating the uv.
 	 */
-	public abstract Color 		getDiffuse(Vec3 point);
+	public abstract Color 		getDiffuse(Vec3 uv);
 	
 	/*
-	 * The specular intensity of a point on the object.
-	 * This is the specular intensity of a point where light is being directly reflected
+	 * The specular intensity of a uv on the object.
+	 * This is the specular intensity of a uv where light is being directly reflected
 	 * into the camera.  Return a specular intensity without doing any lighting calcuations.
 	 * The renderer will determine the actual intensity of the specular based on how light is
-	 * striking the point.
+	 * striking the uv.
 	 */
-	public abstract Color		getSpecular(Vec3 point);
+	public abstract Color		getSpecular(Vec3 uv);
 	
-	public double getReflectivity(Vec3 point){
+	public double getReflectivity(Vec3 uv){
 		return reflectivity;
 	}
 	
-	public double getShininess(Vec3 point){
+	public double getShininess(Vec3 uv){
 		return shininess;
 	}
 	

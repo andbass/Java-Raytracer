@@ -34,15 +34,15 @@ public class Texture extends Material {
 		this.specular = specular;
 	}
 
-	public Color getAmbient(Vec3 point) {
-		return getColorFromTexture(point.x, point.y).scale(ambientMultipler);
+	public Color getAmbient(Vec3 uv) {
+		return getColorFromTexture(uv.x, uv.y).scale(ambientMultipler);
 	}
 
-	public Color getDiffuse(Vec3 point) {
-		return getColorFromTexture(point.x, point.y);
+	public Color getDiffuse(Vec3 uv) {
+		return getColorFromTexture(uv.x, uv.y);
 	}
 
-	public Color getSpecular(Vec3 point) {
+	public Color getSpecular(Vec3 uv) {
 		return specular;
 	}
 	

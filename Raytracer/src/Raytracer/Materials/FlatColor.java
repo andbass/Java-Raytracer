@@ -30,15 +30,15 @@ public class FlatColor extends Material {
 		this.ambient = ambient;  this.diffuse = diffuse;  this.specular = specular;
 	}
 	
-	public Color getAmbient(Vec3 point) {
+	public Color getAmbient(Vec3 uv) {
 		return ambient;
 	}
 
-	public Color getDiffuse(Vec3 point) {
+	public Color getDiffuse(Vec3 uv) {
 		return diffuse;
 	}
 
-	public Color getSpecular(Vec3 point) {
+	public Color getSpecular(Vec3 uv) {
 		return specular;
 	}
 	
