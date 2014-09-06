@@ -62,7 +62,7 @@ public class ExampleScenes {
 		Sphere planet2 = new Sphere(new Vec3(-50,50,120), 10, moonTexture);
 		
 		// Lights
-		PointLight sun = new PointLight(new Vec3(0,5,10), Color.WHITE);
+		PointLight sun = new PointLight(new Vec3(5,5,10), Color.WHITE);
 		
 		EARTH.addGeometry(planet, planet2);
 		EARTH.addLight(sun);
