@@ -55,13 +55,16 @@ public class ExampleScenes {
 		earthTexture.setShininess(5);
 		earthTexture.setSpecular(Color.GREY);
 		
+		Texture moonTexture = new Texture("resources/moon.jpg");
+		
 		// Geometry
 		Sphere planet = new Sphere(new Vec3(0,0,50), 25, earthTexture);
+		Sphere planet2 = new Sphere(new Vec3(-50,50,150), 10, moonTexture);
 		
 		// Lights
 		PointLight sun = new PointLight(new Vec3(0,5,10), Color.WHITE);
 		
-		EARTH.addGeometry(planet);
+		EARTH.addGeometry(planet, planet2);
 		EARTH.addLight(sun);
 		
 		cameraMap.put(EARTH, EARTH_CAMERA);
