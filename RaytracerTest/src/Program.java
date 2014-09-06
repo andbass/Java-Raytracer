@@ -3,8 +3,6 @@ import Raytracer.Core.Camera;
 import Raytracer.Core.Scene;
 import Raytracer.Debugging.Debug;
 import Raytracer.Materials.FlatColor;
-import Raytracer.Materials.Gradient;
-import Raytracer.Math.Color;
 import Raytracer.Sampling.Poseidon;
 import Raytracer.Swing.JRaytracer;
 
@@ -15,7 +13,7 @@ public class Program {
 											 1280, 720,	
 											 new Phong(FlatColor.BLACK),
 											 new Poseidon(9, 0.4));
-		
+				
 		Scene scene = ExampleScenes.EARTH;
 		Camera camera = ExampleScenes.getCamera(scene);
 		
