@@ -51,11 +51,11 @@ public class ExampleScenes {
 		
 		// EARTH	
 		// Materials
-		Texture earthTexture = new Texture("resources/earth_day.jpg");
+		Texture earthTexture = new Texture("resources/images/earth_day.jpg");
 		earthTexture.setShininess(5);
 		earthTexture.setSpecular(Color.GREY);
 		
-		Texture moonTexture = new Texture("resources/moon.jpg");
+		Texture moonTexture = new Texture("resources/images/moon.jpg");
 		
 		// Geometry
 		Sphere planet = new Sphere(new Vec3(0,0,80), 25, earthTexture);
