@@ -16,7 +16,7 @@ public class Program {
 				
 		Scene scene = ExampleScenes.EARTH;
 		Camera camera = ExampleScenes.getCamera(scene);
-		
+				
 		Debug.LOG.start("Test render");
 		raytracer.render(scene, camera);
 		Debug.LOG.end();
