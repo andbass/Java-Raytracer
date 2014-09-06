@@ -1,6 +1,10 @@
 package Raytracer.Materials;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import Raytracer.Debugging.Debug;
 import Raytracer.Math.Color;
@@ -12,7 +16,22 @@ public class Texture extends Material {
 	private Color specular;
 	private double ambientMultipler;
 	
-	// TODO Add loading images from filepaths
+	public Texture(String filePath){
+		this(filePath, Color.WHITE);
+	}
+	
+	public Texture(String filePath, Color specular){
+		super(Material.DEFAULT_SHININESS, Material.DEFAULT_REFLECTIVITY);
+		BufferedImage texture = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+		try {
+			texture = ImageIO.read(new File("resources/earth_day.jpg"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		this.tex = texture;
+		this.ambientMultipler = 0.01;
+		this.specular = specular;
+	}
 	
 	public Texture(BufferedImage tex){
 		this(tex, Material.DEFAULT_SHININESS, Material.DEFAULT_REFLECTIVITY);

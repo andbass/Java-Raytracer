@@ -53,14 +53,9 @@ public class ExampleScenes {
 		// EARTH
 		
 		// Materials
-		
-		BufferedImage texture = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
-		try {
-			texture = ImageIO.read(new File("resources/earth_day.jpg"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		Material earthTexture = new Texture(texture);
+	
+		Material earthTexture = new Texture("resources/earth_day.jpg");
+		earthTexture.setShininess(5);
 		
 		// Geometry
 		Sphere planet = new Sphere(new Vec3(0,0,50), 25, earthTexture);
