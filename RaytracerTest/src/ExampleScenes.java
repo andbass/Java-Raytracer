@@ -20,10 +20,10 @@ import Raytracer.Math.Vec3;
 
 
 public class ExampleScenes {
-	public static final Scene TWO_SPHERES_PLANE = new Scene();
+	public static final Scene TWO_SPHERES_PLANE = new Scene("Two spheres and a plane");
 	private static final Camera TWO_SPHERES_PLANE_CAMERA = new Camera(new Vec3(0,7,-5), Vec3.FORWARD, Vec3.UP, 60);
 	
-	public static final Scene EARTH = new Scene();
+	public static final Scene EARTH = new Scene("Earth and moon");
 	private static final Camera EARTH_CAMERA = new Camera(Vec3.ZERO, Vec3.FORWARD, Vec3.UP, 60);
 	
 	private static HashMap<Scene, Camera> cameraMap = new HashMap<Scene, Camera>();

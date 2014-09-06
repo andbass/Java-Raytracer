@@ -12,12 +12,15 @@ import Raytracer.Math.Vec2;
 import Raytracer.Math.Vec3;
 
 public class Scene {
+	public String name;
+	
 	public List<Geometry> 	geomList;
 	public List<Light>		lightList;
 	
 	private Material		bgMaterial;
 	
-	public Scene(){
+	public Scene(String name){
+		this.name = name;
 		geomList = new ArrayList<Geometry>();
 		lightList = new ArrayList<Light>();
 	}

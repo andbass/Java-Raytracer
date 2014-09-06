@@ -10,6 +10,7 @@ import javax.swing.JComponent;
 import Raytracer.BRDFs.BRDF;
 import Raytracer.Core.Camera;
 import Raytracer.Core.Scene;
+import Raytracer.Debugging.Debug;
 import Raytracer.Math.Color;
 import Raytracer.Renderers.SimpleRenderer;
 import Raytracer.Sampling.Sampler;
@@ -44,6 +45,8 @@ public class JRaytracerViewport extends JComponent {
 		
 		// TODO Fix fullscreen
 		public void render(Scene scene, Camera cam){
+			Debug.lastSceneRendered = scene;
+			
 			image = getWaitImage("Please wait: Now rendering...");
 			this.repaint();
 			
