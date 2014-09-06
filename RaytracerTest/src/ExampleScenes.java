@@ -33,8 +33,7 @@ public class ExampleScenes {
 	}
 	
 	static {
-		// TWO_SPHERES_PLANE
-				
+		// TWO_SPHERES_PLANE	
 		// Geometry
 		Sphere sphere 	= new Sphere(new Vec3(0,7,20), 7, Metal.GOLD);
 		Sphere sphere2 	= new Sphere(new Vec3(-20, 5, 30), 5, FlatColor.MAGNETA);
@@ -50,12 +49,11 @@ public class ExampleScenes {
 		cameraMap.put(TWO_SPHERES_PLANE, TWO_SPHERES_PLANE_CAMERA);
 		// END TWO_SPHERES_PLANE
 		
-		// EARTH
-		
+		// EARTH	
 		// Materials
-	
-		Material earthTexture = new Texture("resources/earth_day.jpg");
+		Texture earthTexture = new Texture("resources/earth_day.jpg");
 		earthTexture.setShininess(5);
+		earthTexture.setSpecular(Color.GREY);
 		
 		// Geometry
 		Sphere planet = new Sphere(new Vec3(0,0,50), 25, earthTexture);
