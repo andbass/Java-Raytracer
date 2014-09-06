@@ -38,10 +38,14 @@ public class PointLight implements Light {
 		return specularIntensity;
 	}
 
-	public Vec3 getDir(Vec3 point) {
+	public Vec3 getDirToLight(Vec3 point) {
 		return pos.sub(point).normalize();
 	}
 	
 	public Vec3 getPos() { return pos; }
+
+	public double getLambertTerm(Vec3 normal, Vec3 pointToLight) {
+		return Math.max(normal.dot(pointToLight), 0);
+	}
 
 }

@@ -8,7 +8,8 @@ public interface Light {
 	public abstract Color 	getDiffuse();
 	public abstract Color 	getSpecular();
 
-	public abstract Vec3  	getDir(Vec3 point);
-	public abstract Vec3 	getPos();
+	public abstract Vec3  	getDirToLight(Vec3 point);
 
+	public abstract double 	getLambertTerm(Vec3 normal, Vec3 pointToLight);
+	
 }

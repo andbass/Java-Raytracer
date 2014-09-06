@@ -53,7 +53,7 @@ public class Phong extends BRDF {
 		Vec3 normal = hitObj.getNormal(hitPoint);
 		
 		for (Light light : scene.lightList){
-			Vec3 pointToLight = light.getDir(hitPoint);
+			Vec3 pointToLight = light.getDirToLight(hitPoint);
 			double distToLight = hitPoint.dist(light.getPos());
 			
 			Ray shadowRay = new Ray(hitPoint, pointToLight);
@@ -64,7 +64,7 @@ public class Phong extends BRDF {
 				Color lightDiffuseIntensity = light.getDiffuse().descale(255);
 				
 				// Diffuse
-				double lambTerm = Math.max(normal.dot(pointToLight),0);
+				double lambTerm = light.getLambertTerm(normal, pointToLight);
 				
 				Color scaledDiffuse = objDiffuse.scale(lambTerm);
 				scaledDiffuse = scaledDiffuse.mul(lightDiffuseIntensity);
