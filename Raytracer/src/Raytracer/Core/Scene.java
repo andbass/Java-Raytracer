@@ -7,9 +7,12 @@ import Raytracer.Debugging.Debug;
 import Raytracer.Geometry.Geometry;
 import Raytracer.Lights.Light;
 import Raytracer.Materials.Material;
-import Raytracer.Math.Color;
-import Raytracer.Math.Vec2;
-import Raytracer.Math.Vec3;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class Scene {
 	public String name;
@@ -40,8 +43,6 @@ public class Scene {
 		return closestResult;
 	}
 	
-
-	
 	public List<Geometry> getGeometry() {
 		return geomList;
 	}
@@ -60,5 +61,9 @@ public class Scene {
 		for (Light light : lights){
 			lightList.add(light);
 		}
+	}
+	
+	public void save(String filePath){
+		
 	}
 }
