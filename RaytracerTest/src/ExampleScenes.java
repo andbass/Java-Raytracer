@@ -58,7 +58,7 @@ public class ExampleScenes {
 		Texture moonTexture = new Texture("resources/moon.jpg");
 		
 		// Geometry
-		Sphere planet = new Sphere(new Vec3(0,0,50), 25, earthTexture);
+		Sphere planet = new Sphere(new Vec3(0,0,100), 25, earthTexture);
 		Sphere planet2 = new Sphere(new Vec3(-50,50,150), 10, moonTexture);
 		
 		// Lights

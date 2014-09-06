@@ -24,7 +24,7 @@ public class Texture extends Material {
 		super(Material.DEFAULT_SHININESS, Material.DEFAULT_REFLECTIVITY);
 		BufferedImage texture = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
 		try {
-			texture = ImageIO.read(new File("resources/earth_day.jpg"));
+			texture = ImageIO.read(new File(filePath));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
