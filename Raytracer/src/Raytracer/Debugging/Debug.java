@@ -12,10 +12,17 @@ public class Debug {
 	
 	private static NumberFormat formatter = NumberFormat.getInstance();
 	
-	public static void write(Object obj){
+	public static void write(Object...objs){
+		write("\t", objs);
+	}
+	
+	public static void write(String delimitter, Object...objs){
 		if (!consoleEnabled) return;
 		
-		System.out.println(obj);
+		for (Object obj : objs){
+			System.out.print(obj + delimitter);
+		}
+		System.out.println();
 	}
 	
 	public static void writeLog(){

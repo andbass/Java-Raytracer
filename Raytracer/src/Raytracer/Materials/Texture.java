@@ -2,6 +2,7 @@ package Raytracer.Materials;
 
 import java.awt.image.BufferedImage;
 
+import Raytracer.Debugging.Debug;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec3;
 
@@ -12,14 +13,6 @@ public class Texture extends Material {
 	private double ambientMultipler;
 	
 	// TODO Add loading images from filepaths
-	
-	public Texture(String filePath){
-		this(filePath, Color.WHITE);
-	}
-	
-	public Texture(String filePath, Color specular){
-		super(Material.DEFAULT_SHININESS, Material.DEFAULT_REFLECTIVITY);
-	}
 	
 	public Texture(BufferedImage tex){
 		this(tex, Material.DEFAULT_SHININESS, Material.DEFAULT_REFLECTIVITY);
@@ -54,6 +47,7 @@ public class Texture extends Material {
 
 	public Color getSpecular(Vec3 uv) {
 		return specular;
+		
 	}
 	
 	public void setSpecular(Color specular){
@@ -62,13 +56,10 @@ public class Texture extends Material {
 	
 	public void setImage(BufferedImage image) { this.tex = image; }
 	
-	// TODO Set image from filepath
-	public void setImage(String filePath) { }
-	
 	private Color getColorFromTexture(double x, double y){
 		int sX = (int)(x*tex.getWidth());
 		int sY = (int)(y*tex.getHeight());
-		
+
 		return new Color(tex.getRGB(sX, sY));
 	}
 }

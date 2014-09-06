@@ -1,4 +1,9 @@
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
+
+import javax.imageio.ImageIO;
 
 import Raytracer.Core.Camera;
 import Raytracer.Core.Scene;
@@ -7,7 +12,9 @@ import Raytracer.Geometry.Sphere;
 import Raytracer.Lights.PointLight;
 import Raytracer.Materials.Checkered;
 import Raytracer.Materials.FlatColor;
+import Raytracer.Materials.Material;
 import Raytracer.Materials.Metal;
+import Raytracer.Materials.Texture;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec3;
 
@@ -15,6 +22,9 @@ import Raytracer.Math.Vec3;
 public class ExampleScenes {
 	public static final Scene TWO_SPHERES_PLANE = new Scene();
 	private static final Camera TWO_SPHERES_PLANE_CAMERA = new Camera(new Vec3(0,7,-5), Vec3.FORWARD, Vec3.UP, 60);
+	
+	public static final Scene EARTH = new Scene();
+	private static final Camera EARTH_CAMERA = new Camera(Vec3.ZERO, Vec3.FORWARD, Vec3.UP, 60);
 	
 	private static HashMap<Scene, Camera> cameraMap = new HashMap<Scene, Camera>();
 	
@@ -39,5 +49,29 @@ public class ExampleScenes {
 		
 		cameraMap.put(TWO_SPHERES_PLANE, TWO_SPHERES_PLANE_CAMERA);
 		// END TWO_SPHERES_PLANE
+		
+		// EARTH
+		
+		// Materials
+		
+		BufferedImage texture = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+		try {
+			texture = ImageIO.read(new File("resources/earth_day.jpg"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Material earthTexture = new Texture(texture);
+		
+		// Geometry
+		Sphere planet = new Sphere(new Vec3(0,0,50), 25, earthTexture);
+		
+		// Lights
+		PointLight sun = new PointLight(new Vec3(0,5,10), Color.WHITE);
+		
+		EARTH.addGeometry(planet);
+		EARTH.addLight(sun);
+		
+		cameraMap.put(EARTH, EARTH_CAMERA);
+		// END EARTH
 	}
 }

@@ -15,13 +15,12 @@ public class Program {
 											 new Phong(Gradient.DAY_SKY),
 											 new Poseidon(9, 0.4));
 		
-		Scene scene = ExampleScenes.TWO_SPHERES_PLANE;
+		Scene scene = ExampleScenes.EARTH;
 		Camera camera = ExampleScenes.getCamera(scene);
 		
 		Debug.LOG.start("Test render");
 		raytracer.render(scene, camera);
 		Debug.LOG.end();
-		
 		
 		Debug.writeLog();
 	}

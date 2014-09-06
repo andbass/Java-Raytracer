@@ -2,6 +2,7 @@ package Raytracer.Geometry;
 
 import Raytracer.Core.Ray;
 import Raytracer.Core.RaycastResult;
+import Raytracer.Debugging.Debug;
 import Raytracer.Materials.Material;
 import Raytracer.Math.Color;
 import Raytracer.Math.QuadraticEquation;
@@ -63,20 +64,21 @@ public class Sphere extends Geometry {
 	}
 
 	public Color getDiffuse(Vec3 point) {
-		point = getNormal(point);
-		
-		Vec2 uv = new Vec2(0.5 + Math.atan2(point.z, point.x) / (2*Math.PI),
-						   0.5 - Math.asin(point.y) / Math.PI);
-		
-		return material.getDiffuse(uv);
+		return material.getDiffuse(getUV(point));
 	}
 
 	public Color getAmbient(Vec3 point) {
-		return material.getAmbient(point);
+		return material.getAmbient(getUV(point));
 	}
 
 	public Color getSpecular(Vec3 point) {
-		return material.getSpecular(point);
+		return material.getSpecular(getUV(point));
+	}
+	
+	private Vec2 getUV(Vec3 point){
+		point = getNormal(point);
+		return new Vec2(0.5 + Math.atan2(point.z, point.x) / (2*Math.PI),
+				   0.5 - Math.asin(point.y) / Math.PI);
 	}
 }
 	
