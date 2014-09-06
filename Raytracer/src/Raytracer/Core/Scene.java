@@ -8,12 +8,6 @@ import Raytracer.Geometry.Geometry;
 import Raytracer.Lights.Light;
 import Raytracer.Materials.Material;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-
 public class Scene {
 	public String name;
 	

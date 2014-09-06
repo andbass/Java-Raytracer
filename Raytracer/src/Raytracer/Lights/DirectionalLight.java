@@ -13,7 +13,7 @@ public class DirectionalLight implements Light {
 	}
 	
 	public DirectionalLight(Vec3 dir, Color ambient, Color diffuse, Color specular){
-		this.dirNeg = dir.negate();
+		this.dirNeg = dir.normalize().negate();
 		this.ambient = ambient;  this.diffuse = diffuse;  this.specular = specular;
 	}
 	

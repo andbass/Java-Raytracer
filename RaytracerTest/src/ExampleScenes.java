@@ -1,18 +1,13 @@
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
-
-import javax.imageio.ImageIO;
 
 import Raytracer.Core.Camera;
 import Raytracer.Core.Scene;
 import Raytracer.Geometry.Plane;
 import Raytracer.Geometry.Sphere;
+import Raytracer.Lights.DirectionalLight;
 import Raytracer.Lights.PointLight;
 import Raytracer.Materials.Checkered;
 import Raytracer.Materials.FlatColor;
-import Raytracer.Materials.Material;
 import Raytracer.Materials.Metal;
 import Raytracer.Materials.Texture;
 import Raytracer.Math.Color;
@@ -33,39 +28,29 @@ public class ExampleScenes {
 	}
 	
 	static {
-		// TWO_SPHERES_PLANE	
-		// Geometry
-		Sphere sphere 	= new Sphere(new Vec3(0,7,20), 7, Metal.GOLD);
-		Sphere sphere2 	= new Sphere(new Vec3(-20, 5, 30), 5, FlatColor.MAGNETA);
-		Plane plane 	= new Plane(Vec3.ZERO, Vec3.UP, Checkered.LARGE_YELLOW_GREEN);
+		// TWO_SPHERES_PLANE
+		TWO_SPHERES_PLANE.addGeometry( 	new Sphere(new Vec3(0,7,20), 7, Metal.GOLD), 
+										new Sphere(new Vec3(-20, 5, 30), 5, FlatColor.MAGNETA), 
+										new Plane(Vec3.ZERO, Vec3.UP, Checkered.LARGE_YELLOW_GREEN));
 		
-		// Lights
-		PointLight light 	= new PointLight(new Vec3(0,50,0), Color.WHITE);
-		PointLight light2	= new PointLight(new Vec3(0,20,-50), Color.WHITE);
-
-		TWO_SPHERES_PLANE.addGeometry(sphere, sphere2, plane);
-		TWO_SPHERES_PLANE.addLight(light, light2);
+		TWO_SPHERES_PLANE.addLight(	new PointLight(new Vec3(0,50,0), Color.WHITE), 
+									new PointLight(new Vec3(0,20,-50), Color.WHITE));
 		
 		cameraMap.put(TWO_SPHERES_PLANE, TWO_SPHERES_PLANE_CAMERA);
 		// END TWO_SPHERES_PLANE
 		
 		// EARTH	
-		// Materials
 		Texture earthTexture = new Texture("resources/images/earth_day.jpg");
 		earthTexture.setShininess(5);
 		earthTexture.setSpecular(Color.GREY);
 		
 		Texture moonTexture = new Texture("resources/images/moon.jpg");
 		
-		// Geometry
-		Sphere planet = new Sphere(new Vec3(0,0,80), 25, earthTexture);
-		Sphere planet2 = new Sphere(new Vec3(-50,50,120), 10, moonTexture);
+		EARTH.addGeometry(	new Sphere(new Vec3(0,0,80), 25, earthTexture), 
+							new Sphere(new Vec3(-50,50,120), 10, moonTexture));
 		
-		// Lights
-		PointLight sun = new PointLight(new Vec3(5,5,10), Color.WHITE);
-		
-		EARTH.addGeometry(planet, planet2);
-		EARTH.addLight(sun);
+		//EARTH.addLight(	new PointLight(new Vec3(5,5,10), Color.WHITE));
+		EARTH.addLight(	new DirectionalLight(Vec3.UP.negate().sub(Vec3.FORWARD), Color.WHITE));
 		
 		cameraMap.put(EARTH, EARTH_CAMERA);
 		// END EARTH

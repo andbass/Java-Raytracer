@@ -25,8 +25,8 @@ public class Color {
 
 	public Color(String hex) {
 		this(Integer.valueOf(hex.substring(1, 3), 16),
-				Integer.valueOf(hex.substring(3, 5), 16),
-				Integer.valueOf(hex.substring(5, 7), 16));
+			 Integer.valueOf(hex.substring(3, 5), 16),
+			 Integer.valueOf(hex.substring(5, 7), 16));
 	}
 
 	public Color(int rgb){
