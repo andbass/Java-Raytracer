@@ -8,6 +8,10 @@ import Raytracer.Math.Vec3;
 
 public abstract class Geometry {
 
+	public Geometry(Material mat){
+		material = mat;
+	}
+	
 	protected Material material;
 
 	public Material 	getMaterial() { return material; };

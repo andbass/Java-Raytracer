@@ -13,11 +13,10 @@ public class Sphere extends Geometry {
 	private double radius, radiusSquared;
 	
 	public Sphere(Vec3 pos, double radius, Material mat){	
+		super(mat);
+		
 		this.pos = pos;
 		setRadius(radius);
-		
-		super.setMaterial(mat);
-
 	}
 	
 	public RaycastResult collide(Ray ray) {
