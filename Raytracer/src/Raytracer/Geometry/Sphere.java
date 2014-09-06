@@ -78,7 +78,7 @@ public class Sphere extends Geometry {
 	private Vec2 getUV(Vec3 point){
 		point = getNormal(point);
 		return new Vec2(0.5 + Math.atan2(point.z, point.x) / (2*Math.PI),
-				   0.5 - Math.asin(point.y) / Math.PI);
+				   		0.5 - Math.asin(point.y) / Math.PI);
 	}
 }
 	
