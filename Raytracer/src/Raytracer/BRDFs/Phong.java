@@ -8,6 +8,7 @@ import Raytracer.Core.Ray;
 import Raytracer.Core.RaycastResult;
 import Raytracer.Core.Scene;
 import Raytracer.Geometry.Geometry;
+import Raytracer.Lights.DirectionalLight;
 import Raytracer.Lights.Light;
 import Raytracer.Materials.FlatColor;
 import Raytracer.Materials.Material;
@@ -54,8 +55,7 @@ public class Phong extends BRDF {
 		
 		for (Light light : scene.lightList){
 			Vec3 pointToLight = light.getDirToLight(hitPoint);
-			double distToLight = hitPoint.dist(light.getPos());
-			
+			double distToLight = light.getDist(hitPoint);
 			Ray shadowRay = new Ray(hitPoint, pointToLight);
 			
 			RaycastResult shadowResult = scene.raycast(shadowRay);

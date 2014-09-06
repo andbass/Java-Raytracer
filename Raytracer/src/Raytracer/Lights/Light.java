@@ -11,5 +11,6 @@ public interface Light {
 	public abstract Vec3  	getDirToLight(Vec3 point);
 
 	public abstract double 	getLambertTerm(Vec3 normal, Vec3 pointToLight);
+	public abstract double 	getDist(Vec3 point);
 	
 }

@@ -39,4 +39,8 @@ public class DirectionalLight implements Light {
 		return lambTerm;
 	}
 
+	public double getDist(Vec3 point) {
+		return Double.POSITIVE_INFINITY;
+	}
+
 }

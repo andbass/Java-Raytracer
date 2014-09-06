@@ -48,4 +48,8 @@ public class PointLight implements Light {
 		return Math.max(normal.dot(pointToLight), 0);
 	}
 
+	public double getDist(Vec3 point) {
+		return pos.dist(point);
+	}
+
 }
