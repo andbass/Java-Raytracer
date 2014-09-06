@@ -29,8 +29,16 @@ public class Color {
 				Integer.valueOf(hex.substring(5, 7), 16));
 	}
 
-	public Color(int[] rgb){
-		this(rgb[0], rgb[1], rgb[2]);
+	public Color(int rgb){
+		double r = (rgb >> 16) & 0xFF;
+		double g = (rgb >> 8) & 0xFF;
+		double b = rgb & 0xFF;
+		
+		this.r = r;  this.g = g;  this.b = b;
+	}
+	
+	public Color(int[] rgbArray){
+		this(rgbArray[0], rgbArray[1], rgbArray[2]);
 	}
 	
 	public Color(java.awt.Color color) {

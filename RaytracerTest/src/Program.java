@@ -2,10 +2,8 @@ import Raytracer.BRDFs.Phong;
 import Raytracer.Core.Camera;
 import Raytracer.Core.Scene;
 import Raytracer.Debugging.Debug;
-import Raytracer.Geometry.Triangle;
-import Raytracer.Materials.FlatColor;
 import Raytracer.Materials.Gradient;
-import Raytracer.Math.Vec3;
+import Raytracer.Math.Color;
 import Raytracer.Sampling.Poseidon;
 import Raytracer.Swing.JRaytracer;
 
@@ -19,6 +17,10 @@ public class Program {
 		
 		Scene scene = ExampleScenes.TWO_SPHERES_PLANE;
 		Camera camera = ExampleScenes.getCamera(scene);
+		
+		int max = 5 | 2;
+		
+		Debug.write(max);
 		
 		Debug.LOG.start("Test render");
 		raytracer.render(scene, camera);
