@@ -2,7 +2,9 @@ package Raytracer.Lights;
 
 import Raytracer.Math.*;
 
-public class PointLight implements Light {
+import java.io.Serializable;
+
+public class PointLight implements Light, Serializable {
 
 	private Vec3 pos;
 	

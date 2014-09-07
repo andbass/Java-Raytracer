@@ -6,7 +6,9 @@ import Raytracer.Materials.FlatColor;
 import Raytracer.Sampling.Poseidon;
 import Raytracer.Swing.JRaytracer;
 
-public class Program {
+import java.io.Serializable;
+
+public class Program implements Serializable {
 	public static void main(String[] args){
 
 		JRaytracer raytracer = new JRaytracer("Raytracer (Alt + Enter to fullscreen)",

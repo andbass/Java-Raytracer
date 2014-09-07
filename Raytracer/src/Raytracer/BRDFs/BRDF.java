@@ -1,14 +1,15 @@
 package Raytracer.BRDFs;
 
 import Raytracer.Core.Camera;
-import Raytracer.Core.Ray;
 import Raytracer.Core.RaycastResult;
 import Raytracer.Core.Scene;
 import Raytracer.Materials.Material;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec2;
 
-public abstract class BRDF {
+import java.io.Serializable;
+
+public abstract class BRDF implements Serializable {
 	
 	protected Material bgMaterial;
 	

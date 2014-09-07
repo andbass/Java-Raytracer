@@ -2,13 +2,13 @@ package Raytracer.Geometry;
 
 import Raytracer.Core.Ray;
 import Raytracer.Core.RaycastResult;
-import Raytracer.Debugging.Debug;
-import Raytracer.Materials.FlatColor;
 import Raytracer.Materials.Material;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec3;
 
-public class Triangle extends Geometry {
+import java.io.Serializable;
+
+public class Triangle extends Geometry implements Serializable {
 
 	private Vec3 a, b, c;
 	private Vec3 normal;

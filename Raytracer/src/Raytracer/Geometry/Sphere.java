@@ -2,14 +2,15 @@ package Raytracer.Geometry;
 
 import Raytracer.Core.Ray;
 import Raytracer.Core.RaycastResult;
-import Raytracer.Debugging.Debug;
 import Raytracer.Materials.Material;
 import Raytracer.Math.Color;
 import Raytracer.Math.QuadraticEquation;
 import Raytracer.Math.Vec2;
 import Raytracer.Math.Vec3;
 
-public class Sphere extends Geometry {
+import java.io.Serializable;
+
+public class Sphere extends Geometry implements Serializable {
 	private Vec3 pos;
 	private double radius, radiusSquared;
 	

@@ -1,24 +1,21 @@
 package Raytracer.Swing;
 
-import java.awt.Dimension;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
-import javax.swing.JFrame;
-
 import Raytracer.BRDFs.BRDF;
 import Raytracer.Core.Camera;
 import Raytracer.Core.Scene;
 import Raytracer.Sampling.Sampler;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.io.Serializable;
 
 /**
  * A custom JFrame that contains a JRaytracerViewport. Allows for easy usage of
  * the raytracing library.
  */
-public class JRaytracer extends JFrame implements KeyListener {
+public class JRaytracer extends JFrame implements KeyListener, Serializable {
 	
 	private static final long serialVersionUID = -6839601427355790643L;
 	

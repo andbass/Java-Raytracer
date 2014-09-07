@@ -1,12 +1,5 @@
 package Raytracer.Swing;
 
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-
-import javax.swing.JComponent;
-
 import Raytracer.BRDFs.BRDF;
 import Raytracer.Core.Camera;
 import Raytracer.Core.Scene;
@@ -15,8 +8,13 @@ import Raytracer.Math.Color;
 import Raytracer.Renderers.SimpleRenderer;
 import Raytracer.Sampling.Sampler;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.Serializable;
 
-public class JRaytracerViewport extends JComponent {
+
+public class JRaytracerViewport extends JComponent implements Serializable {
 		
 		private static final long serialVersionUID = 1L;
 		

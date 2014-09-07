@@ -1,16 +1,15 @@
 package Raytracer.Materials;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
-import Raytracer.Debugging.Debug;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec3;
 
-public class Texture extends Material {
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.io.Serializable;
+
+public class Texture extends Material implements Serializable {
 	
 	private BufferedImage tex;
 	private Color specular;

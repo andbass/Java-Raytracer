@@ -6,7 +6,9 @@ import Raytracer.Materials.Material;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec3;
 
-public abstract class Geometry {
+import java.io.Serializable;
+
+public abstract class Geometry implements Serializable {
 
 	public Geometry(Material mat){
 		material = mat;

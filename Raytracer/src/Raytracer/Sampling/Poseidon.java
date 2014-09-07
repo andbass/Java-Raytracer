@@ -2,7 +2,9 @@ package Raytracer.Sampling;
 
 import Raytracer.Math.Vec2;
 
-public class Poseidon extends Sampler {
+import java.io.Serializable;
+
+public class Poseidon extends Sampler implements Serializable {
 
 	private double scale;
 	

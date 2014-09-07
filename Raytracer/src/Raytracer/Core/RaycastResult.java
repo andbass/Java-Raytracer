@@ -3,7 +3,9 @@ package Raytracer.Core;
 import Raytracer.Geometry.Geometry;
 import Raytracer.Math.Vec3;
 
-public class RaycastResult {
+import java.io.Serializable;
+
+public class RaycastResult implements Serializable {
 	public static final RaycastResult FAILURE = new RaycastResult();
 	
 	public double distance;

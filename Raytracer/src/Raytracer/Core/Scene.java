@@ -1,14 +1,15 @@
 package Raytracer.Core;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import Raytracer.Debugging.Debug;
 import Raytracer.Geometry.Geometry;
 import Raytracer.Lights.Light;
 import Raytracer.Materials.Material;
 
-public class Scene {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Scene implements Serializable {
 	public String name;
 	
 	public List<Geometry> 	geomList;

@@ -3,10 +3,12 @@ package Raytracer.Materials;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec3;
 
+import java.io.Serializable;
+
 /**
  * Created by Ben Scholer on 9/5/14.
  */
-public class Metal extends Material {
+public class Metal extends Material implements Serializable {
 
 	public static final Metal ALUMINIUM = new Metal(new Color(173, 178, 189));
 	public static final Metal BRASS = new Metal(new Color(181, 166, 66));

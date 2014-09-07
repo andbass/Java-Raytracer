@@ -3,10 +3,12 @@ package Raytracer.Materials;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec3;
 
+import java.io.Serializable;
+
 /**
  * A Material represents a two dimensinal surface that is wrapped around Geometry
  */
-public abstract class Material { // TODO Replace Vec3 paramters with Vec2
+public abstract class Material implements Serializable { // TODO Replace Vec3 paramters with Vec2
 	
 	public static final double DEFAULT_SHININESS 	= 5;
 	public static final double DEFAULT_REFLECTIVITY = 0;

@@ -3,7 +3,9 @@ package Raytracer.Materials;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec3;
 
-public class Checkered extends Material {
+import java.io.Serializable;
+
+public class Checkered extends Material implements Serializable {
 
 	public static final Checkered WHITE_BLACK 	= new Checkered(10, Color.WHITE, Color.BLACK);
 	public static final Checkered WHITE_RED	  	= new Checkered(10, Color.WHITE, Color.RED);

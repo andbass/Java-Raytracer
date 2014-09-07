@@ -2,7 +2,9 @@ package Raytracer.Core;
 
 import Raytracer.Math.*;
 
-public class Ray {
+import java.io.Serializable;
+
+public class Ray implements Serializable {
 	public Vec3 pos;
 	public Vec3 dir;
 	

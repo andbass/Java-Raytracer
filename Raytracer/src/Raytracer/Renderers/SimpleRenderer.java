@@ -1,9 +1,5 @@
 package Raytracer.Renderers;
 
-import java.awt.Dimension;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-
 import Raytracer.BRDFs.BRDF;
 import Raytracer.Core.Camera;
 import Raytracer.Core.Ray;
@@ -13,7 +9,11 @@ import Raytracer.Math.Color;
 import Raytracer.Math.Vec2;
 import Raytracer.Sampling.Sampler;
 
-public class SimpleRenderer {
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.Serializable;
+
+public class SimpleRenderer implements Serializable {
 	private int width, height;
 	private double ratio;
 	

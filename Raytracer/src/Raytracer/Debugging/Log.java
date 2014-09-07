@@ -1,9 +1,10 @@
 package Raytracer.Debugging;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Log {
+public class Log implements Serializable {
 	private String name;
 	private String footNote = "";
 	private List<LogEntry> entries;

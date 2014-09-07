@@ -6,7 +6,9 @@ import Raytracer.Materials.Material;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec3;
 
-public class Plane extends Geometry {
+import java.io.Serializable;
+
+public class Plane extends Geometry implements Serializable {
 
 	private Vec3 pos, normal;
 	

@@ -4,7 +4,9 @@ import Raytracer.Debugging.Debug;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec3;
 
-public class DirectionalLight implements Light {
+import java.io.Serializable;
+
+public class DirectionalLight implements Light, Serializable {
 	
 	private Vec3 dirNeg;
 	private Color ambient, diffuse, specular;

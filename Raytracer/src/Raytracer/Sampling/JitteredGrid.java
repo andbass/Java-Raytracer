@@ -2,7 +2,9 @@ package Raytracer.Sampling;
 
 import Raytracer.Math.Vec2;
 
-public class JitteredGrid extends Grid {
+import java.io.Serializable;
+
+public class JitteredGrid extends Grid implements Serializable {
 
 	public JitteredGrid(int sampleSize) {
 		super(sampleSize);

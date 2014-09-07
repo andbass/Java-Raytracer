@@ -1,10 +1,11 @@
 package Raytracer.Debugging;
 
-import java.text.NumberFormat;
-
 import Raytracer.Core.Scene;
 
-public class Debug {
+import java.io.Serializable;
+import java.text.NumberFormat;
+
+public class Debug implements Serializable {
 	public static boolean consoleEnabled = true;
 	public static boolean loggingEnabled = true;
 	

@@ -1,13 +1,9 @@
 package Raytracer.BRDFs;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import Raytracer.Core.Camera;
 import Raytracer.Core.Ray;
 import Raytracer.Core.RaycastResult;
 import Raytracer.Core.Scene;
-import Raytracer.Debugging.Debug;
 import Raytracer.Geometry.Geometry;
 import Raytracer.Lights.Light;
 import Raytracer.Materials.FlatColor;
@@ -16,7 +12,11 @@ import Raytracer.Math.Color;
 import Raytracer.Math.Vec2;
 import Raytracer.Math.Vec3;
 
-public class Phong extends BRDF {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Phong extends BRDF implements Serializable {
 	
 	private int maxReflectiveIndex = 5;
 	

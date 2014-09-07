@@ -3,7 +3,9 @@ package Raytracer.Materials;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec3;
 
-public class FlatColor extends Material {
+import java.io.Serializable;
+
+public class FlatColor extends Material implements Serializable {
 
     public static final FlatColor RED    	= new FlatColor(Color.RED);
 	public static final FlatColor GREEN	 	= new FlatColor(Color.GREEN);
