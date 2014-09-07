@@ -85,4 +85,16 @@ public class Texture extends Material implements Serializable {
 
 		return new Color(tex.getRGB(sX, sY));
 	}
+	
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+	    out.writeObject(specular);
+	    out.writeObject(ambientMultipler);
+	    ImageIO.write(tex,"png",ImageIO.createImageOutputStream(out));
+  	}
+
+	private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+	  	specular=(Color)in.readObject();
+	  	ambientMultipler = in.readDouble();
+	    tex=ImageIO.read(ImageIO.createImageInputStream(in));
+	}
 }

@@ -51,6 +51,8 @@ public class ExampleScenes {
 		
 		EARTH.addLight(	new PointLight(new Vec3(5,5,10), Color.WHITE));
 		
+		EARTH.save("resources/scenes/earth.scene");
+		
 		cameraMap.put(EARTH, EARTH_CAMERA);
 		// END EARTH
 	}
