@@ -15,5 +15,4 @@ public class Poseidon extends Sampler {
 		return new Vec2((Math.random() * 2 - 1)*scale, (Math.random() * 2 - 1)*scale);
 	}
 
-
 }
