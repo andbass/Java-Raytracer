@@ -15,7 +15,7 @@ import java.io.Serializable;
  * A custom JFrame that contains a JRaytracerViewport. Allows for easy usage of
  * the raytracing library.
  */
-public class JRaytracer extends JFrame implements KeyListener, Serializable {
+public class JRaytracer extends JFrame implements KeyListener {
 	
 	private static final long serialVersionUID = -6839601427355790643L;
 	

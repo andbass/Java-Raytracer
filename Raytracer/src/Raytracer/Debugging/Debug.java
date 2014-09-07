@@ -5,7 +5,7 @@ import Raytracer.Core.Scene;
 import java.io.Serializable;
 import java.text.NumberFormat;
 
-public class Debug implements Serializable {
+public class Debug {
 	public static boolean consoleEnabled = true;
 	public static boolean loggingEnabled = true;
 	

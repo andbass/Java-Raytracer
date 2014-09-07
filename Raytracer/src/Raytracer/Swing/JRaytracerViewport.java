@@ -14,7 +14,7 @@ import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
 
-public class JRaytracerViewport extends JComponent implements Serializable {
+public class JRaytracerViewport extends JComponent {
 		
 		private static final long serialVersionUID = 1L;
 		

@@ -4,7 +4,7 @@ import Raytracer.Math.*;
 
 import java.io.Serializable;
 
-public class Ray implements Serializable {
+public class Ray {
 	public Vec3 pos;
 	public Vec3 dir;
 	

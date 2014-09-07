@@ -4,7 +4,7 @@ import Raytracer.Math.Vec2;
 
 import java.io.Serializable;
 
-public abstract class Sampler implements Serializable {
+public abstract class Sampler {
 	protected int samples, sqrtSamples;
 	protected double subPixelSize;
 	

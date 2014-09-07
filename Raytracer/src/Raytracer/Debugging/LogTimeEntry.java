@@ -7,7 +7,7 @@ import java.io.Serializable;
  * entry took to complete or to terminate.  This is used to measure how long parts of a program take to
  * complete.
  */
-public class LogTimeEntry extends LogEntry implements Serializable {
+public class LogTimeEntry extends LogEntry {
 
 	private long startTime;
 	private long endTime;
