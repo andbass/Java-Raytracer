@@ -88,7 +88,7 @@ public class Texture extends Material implements Serializable {
 	
 	private void writeObject(java.io.ObjectOutputStream out) throws IOException {
 	    out.writeObject(specular);
-	    out.writeObject(ambientMultipler);
+	    out.writeDouble(ambientMultipler);
 	    ImageIO.write(tex,"png",ImageIO.createImageOutputStream(out));
   	}
 
