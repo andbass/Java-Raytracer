@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 public abstract class Geometry implements Serializable {
 
+
 	public Geometry(Material mat){
 		material = mat;
 	}

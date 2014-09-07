@@ -15,6 +15,7 @@ import Raytracer.Lights.Light;
 import Raytracer.Materials.Material;
 
 public class Scene implements Serializable {
+
 	public String name;
 	
 	public List<Geometry> 	geomList;
@@ -86,6 +87,9 @@ public class Scene implements Serializable {
 			FileInputStream fileIn = new FileInputStream(filePath);
 			ObjectInputStream objIn = new ObjectInputStream(fileIn);
 			scene = (Scene)objIn.readObject();
+			
+			fileIn.close();
+			objIn.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

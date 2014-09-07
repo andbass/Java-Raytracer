@@ -20,7 +20,6 @@ import java.io.File;
  */
 public class JRaytracer extends JFrame implements KeyListener {
 	
-	private static final long serialVersionUID = -6839601427355790643L;
 
 	private JFileChooser fc = new JFileChooser();
 	
@@ -137,6 +136,7 @@ public class JRaytracer extends JFrame implements KeyListener {
 						try {
 							File file = fc.getSelectedFile();
 							Image toSave = viewport.getRender();
+						
 							ImageIO.write((RenderedImage) toSave, "png", new File(file.getAbsolutePath() + ".png"));
 							break;
 						} catch (Exception err) {

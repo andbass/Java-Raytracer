@@ -1,9 +1,8 @@
 package Raytracer.Debugging;
 
-import Raytracer.Core.Scene;
-
-import java.io.Serializable;
 import java.text.NumberFormat;
+
+import Raytracer.Core.Scene;
 
 public class Debug {
 	public static boolean consoleEnabled = true;

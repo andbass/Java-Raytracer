@@ -11,6 +11,7 @@ import java.io.Serializable;
  * If the discriminant (b^2 - 4*a*c) is negative, the solvable field will be false
  */
 public class QuadraticEquation implements Serializable {
+
 	private boolean solvable;
 	private double a, b, c;
 	private double root1; // if we add the discrimant

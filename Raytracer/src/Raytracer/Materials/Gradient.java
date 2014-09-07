@@ -6,6 +6,8 @@ import Raytracer.Math.Vec3;
 import java.io.Serializable;
 
 public class Gradient extends Material implements Serializable {
+
+
 	public static final Gradient DAY_SKY = new Gradient(new Color(70,130,180),
 														new Color(0,191,255),
 														new Color(173,216,230));

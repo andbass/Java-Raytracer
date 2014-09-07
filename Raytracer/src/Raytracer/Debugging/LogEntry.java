@@ -1,6 +1,5 @@
 package Raytracer.Debugging;
 
-import java.io.Serializable;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;

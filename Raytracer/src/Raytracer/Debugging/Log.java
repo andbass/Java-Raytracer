@@ -1,11 +1,10 @@
 package Raytracer.Debugging;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Log {
-	private String name;
+	public String name;
 	private String footNote = "";
 	private List<LogEntry> entries;
 	
@@ -13,6 +12,10 @@ public class Log {
 	private int depth = -1;
 	
 	public Log(String name){
+		this(name, true);
+	}
+	
+	public Log(String name, boolean useLogViewer){
 		this.name = name;
 		entries = new ArrayList<LogEntry>();
 		trackedEntries = new ArrayList<LogTimeEntry>();

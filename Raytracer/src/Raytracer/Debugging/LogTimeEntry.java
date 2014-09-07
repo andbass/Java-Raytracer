@@ -12,21 +12,29 @@ public class LogTimeEntry extends LogEntry {
 	private long startTime;
 	private long endTime;
 	
+	private boolean finished = false;
+	
 	public LogTimeEntry(String name) {
 		super(name);
 		startTime = System.nanoTime();
 	}
 	
 	public void finish(){
+		finished = true;
 		endTime = System.nanoTime();	
 	}
 	
 	public String toString(){
 		long nano = endTime - startTime;
 		
-		String sec = String.format("%.5g", nano * 1e-9);
+		String sec;
+		if (finished){
+			sec = String.format("%.5g", nano * 1e-9);
+		} else {
+			sec = "In progress";
+		}
 		
-		return super.toString() + " - " + sec + "s";
+		return super.toString() + " - " + sec;
 	}
 	
 }

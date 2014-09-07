@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 public class Checkered extends Material implements Serializable {
 
+
 	public static final Checkered WHITE_BLACK 	= new Checkered(10, Color.WHITE, Color.BLACK);
 	public static final Checkered WHITE_RED	  	= new Checkered(10, Color.WHITE, Color.RED);
 	public static final Checkered YELLOW_GREEN 	= new Checkered(10, Color.YELLOW, Color.GREEN);

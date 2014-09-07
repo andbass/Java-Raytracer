@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class Vec2 extends Vec3 implements Serializable {
 
+
+
 	public Vec2(double x, double y){
 		super(x, y, 0);
 	}

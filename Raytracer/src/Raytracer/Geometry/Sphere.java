@@ -11,6 +11,7 @@ import Raytracer.Math.Vec3;
 import java.io.Serializable;
 
 public class Sphere extends Geometry implements Serializable {
+
 	private Vec3 pos;
 	private double radius, radiusSquared;
 	

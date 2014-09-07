@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 public class Triangle extends Geometry implements Serializable {
 
+	
 	private Vec3 a, b, c;
 	private Vec3 normal;
 

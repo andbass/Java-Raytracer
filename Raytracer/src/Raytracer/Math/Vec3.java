@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Vec3 implements Serializable {
 
+
 	/**
 	 * A Vec3 with every component equal to zero.
 	 */

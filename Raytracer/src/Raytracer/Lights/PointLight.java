@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 public class PointLight implements Light, Serializable {
 
+
 	private Vec3 pos;
 	
 	private Color ambientIntensity;

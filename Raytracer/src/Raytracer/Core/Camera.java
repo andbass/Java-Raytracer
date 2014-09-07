@@ -5,6 +5,7 @@ import Raytracer.Math.Vec3;
 import java.io.Serializable;
 
 public class Camera implements Serializable  {
+
 	private Vec3 pos, dir, right, up;
 	private double fovMultipler;
 	private double fov;
