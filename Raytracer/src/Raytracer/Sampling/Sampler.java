@@ -17,13 +17,7 @@ public abstract class Sampler implements Serializable {
 	public int 	getSamples() { return this.samples; }
 	
 	public void setSamples(int samples) { 
-		this.sqrtSamples = (int)Math.sqrt(samples);
-		
-		if (sqrtSamples*sqrtSamples != samples){  			
-			throw new IllegalArgumentException("The number of samples to be a perfect square, as the supersampling uses a square grid to cast additional rays");
-		}
-		this.samples 		= samples;
-		this.subPixelSize 	= 1.0 / sqrtSamples; 
+		this.samples = samples;
 	}
 	
 }
