@@ -1,13 +1,18 @@
 package Raytracer.Core;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import Raytracer.Debugging.Debug;
 import Raytracer.Geometry.Geometry;
 import Raytracer.Lights.Light;
 import Raytracer.Materials.Material;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Scene implements Serializable {
 	public String name;
@@ -59,6 +64,33 @@ public class Scene implements Serializable {
 	}
 	
 	public void save(String filePath){
+		try {
+			FileOutputStream fileOutput = new FileOutputStream(filePath);
+			ObjectOutputStream out = new ObjectOutputStream(fileOutput);
+			
+	        out.writeObject(this);
+	        out.close();
+	        fileOutput.close();
+
+			
+		} catch (Exception e){
+			e.printStackTrace();
+		}
 		
+	}
+	
+	public static Scene load(String filePath){
+		Scene scene = new Scene("Failed to load scene");
+		
+		try {
+			FileInputStream fileIn = new FileInputStream(filePath);
+			ObjectInputStream objIn = new ObjectInputStream(fileIn);
+			scene = (Scene)objIn.readObject();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return scene;
 	}
 }

@@ -4,7 +4,7 @@ import Raytracer.Math.Vec2;
 
 import java.io.Serializable;
 
-public class Grid extends Sampler implements Serializable {
+public class Grid extends Sampler {
 
 	public Grid(int sampleSize){
 		super(sampleSize);

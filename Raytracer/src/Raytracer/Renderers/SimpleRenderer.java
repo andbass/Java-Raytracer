@@ -13,7 +13,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
-public class SimpleRenderer implements Serializable {
+public class SimpleRenderer {
 	private int width, height;
 	private double ratio;
 	

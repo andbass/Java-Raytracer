@@ -7,7 +7,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 
-public class LogEntry implements Serializable {
+public class LogEntry {
 	public Instant timeOfEntry;
 	public String name;
 	

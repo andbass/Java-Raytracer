@@ -9,7 +9,7 @@ import Raytracer.Math.Vec2;
 
 import java.io.Serializable;
 
-public abstract class BRDF implements Serializable {
+public abstract class BRDF {
 	
 	protected Material bgMaterial;
 	

@@ -16,7 +16,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Phong extends BRDF implements Serializable {
+public class Phong extends BRDF {
 	
 	private int maxReflectiveIndex = 5;
 	

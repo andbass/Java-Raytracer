@@ -5,7 +5,7 @@ import Raytracer.Math.Vec3;
 
 import java.io.Serializable;
 
-public class RaycastResult implements Serializable {
+public class RaycastResult {
 	public static final RaycastResult FAILURE = new RaycastResult();
 	
 	public double distance;

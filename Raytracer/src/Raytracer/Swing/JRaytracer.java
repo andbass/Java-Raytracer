@@ -5,19 +5,24 @@ import Raytracer.Core.Camera;
 import Raytracer.Core.Scene;
 import Raytracer.Sampling.Sampler;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.Serializable;
+import java.awt.image.RenderedImage;
+import java.io.File;
 
 /**
  * A custom JFrame that contains a JRaytracerViewport. Allows for easy usage of
  * the raytracing library.
  */
-public class JRaytracer extends JFrame implements KeyListener, Serializable {
+public class JRaytracer extends JFrame implements KeyListener {
 	
 	private static final long serialVersionUID = -6839601427355790643L;
+
+	private JFileChooser fc = new JFileChooser();
 	
 	private JRaytracerViewport viewport;
 	private GraphicsDevice monitor;
@@ -122,7 +127,24 @@ public class JRaytracer extends JFrame implements KeyListener, Serializable {
 				System.exit(0);
 				break;
 			}
-			
+
+			case KeyEvent.VK_S:
+			{
+				fc.setFileFilter(new FileNameExtensionFilter("Image Files", "jpg", "jpeg", "png", "tif"));
+				int val = fc.showSaveDialog(this);
+				switch (val) {
+					case JFileChooser.APPROVE_OPTION:
+						try {
+							File file = fc.getSelectedFile();
+							Image toSave = viewport.getRender();
+							ImageIO.write((RenderedImage) toSave, "png", new File(file.getAbsolutePath() + ".png"));
+							break;
+						} catch (Exception err) {
+							err.printStackTrace();
+						}
+				}
+				break;
+			}
 		}
 		
 	}
@@ -133,5 +155,5 @@ public class JRaytracer extends JFrame implements KeyListener, Serializable {
 
 	public void keyTyped(KeyEvent e) {
 		
-	}	
+	}
 }
