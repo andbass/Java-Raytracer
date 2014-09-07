@@ -12,7 +12,9 @@ import Raytracer.Swing.JRaytracer;
 public class Program {
 	public static void main(String[] args){
 		
-		JLogViewer logViewer = new JLogViewer(Debug.LOG);
+		JLogViewer logViewer = new JLogViewer(400,480);
+		Debug.LOG.setLogViewer(logViewer);
+		
 		JRaytracer raytracer = new JRaytracer("Raytracer (Alt + Enter to fullscreen)",
 											 1280, 720,	
 											 new Phong(FlatColor.BLACK),
@@ -24,7 +26,7 @@ public class Program {
 		Debug.LOG.start("Test render");
 		raytracer.render(scene, camera);
 		Debug.LOG.end();
-		
+
 	}
 
 }

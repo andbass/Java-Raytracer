@@ -3,6 +3,8 @@ package Raytracer.Debugging;
 import java.util.ArrayList;
 import java.util.List;
 
+import Raytracer.Swing.JLogViewer;
+
 public class Log {
 	public String name;
 	private String footNote = "";
@@ -10,6 +12,8 @@ public class Log {
 	
 	private List<LogTimeEntry> trackedEntries;
 	private int depth = -1;
+	
+	private JLogViewer logViewer;
 	
 	public Log(String name){
 		this(name, true);
@@ -21,15 +25,18 @@ public class Log {
 		trackedEntries = new ArrayList<LogTimeEntry>();
 	}
 	
-	public void add(String name){
-		entries.add(new LogEntry(name));
+	public void add(Object obj){
+		entries.add(new LogEntry(obj.toString()));
+		updateLogViewer();
 	}
 	
-	public void start(String name){
-		LogTimeEntry entry = new LogTimeEntry(name);
+	public void start(Object obj){
+		LogTimeEntry entry = new LogTimeEntry(obj.toString());
 		entries.add(entry);
 		trackedEntries.add(entry);
 		depth++;
+		
+		updateLogViewer();
 	}
 
 	public void end(){
@@ -37,9 +44,12 @@ public class Log {
 		trackedEntries.remove(depth);
 		
 		depth--;
+		updateLogViewer();
 	}
 	
 	public void footNote(String note) { this.footNote += note + "\n"; }
+	
+	private void updateLogViewer() { this.logViewer.contents.setText(this.toString()); }
 	
 	public String toString(){
 		String contents = "";
@@ -49,5 +59,10 @@ public class Log {
 		}
 		
 		return 	"-- " + name + " --" + "\n" + contents + "\n" + footNote + "\n" + "-- End of " + name + " --";
+	}
+	
+	public void setLogViewer(JLogViewer logViewer) {
+		logViewer.setTitle(name);
+		this.logViewer = logViewer;
 	}
 }

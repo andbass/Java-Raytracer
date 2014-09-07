@@ -21,6 +21,6 @@ public class LogEntry {
 	public String toString(){
 		String date = time.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT));
 		
-		return "[" + date + "]" + "\t" + name;
+		return "[" + date + "]" + "  " + name;
 	}
 }
