@@ -11,15 +11,21 @@ import java.util.List;
 
 import Raytracer.Debugging.Debug;
 import Raytracer.Geometry.Geometry;
+import Raytracer.Geometry.Sphere;
 import Raytracer.Lights.Light;
 import Raytracer.Materials.Material;
 
 public class Scene implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public String name;
 	
-	public List<Geometry> 	geomList;
-	public List<Light>		lightList;
+	public ArrayList<Geometry> 	geomList;
+	public ArrayList<Light>		lightList;
 	
 	private Material		bgMaterial;
 	
@@ -44,15 +50,15 @@ public class Scene implements Serializable {
 		return closestResult;
 	}
 	
-	public List<Geometry> getGeometry() {
+	public ArrayList<Geometry> getGeometry() {
 		return geomList;
 	}
 	
-	public List<Light> getLights(){
+	public ArrayList<Light> getLights(){
 		return lightList;
 	}
 	
-	public void addGeometry(Collection<Geometry> collection){
+	public void addGeometry(Collection<Sphere> collection){
 		for (Geometry geom : collection){
 			geomList.add(geom);
 		}

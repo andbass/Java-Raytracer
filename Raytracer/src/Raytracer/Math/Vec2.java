@@ -6,6 +6,11 @@ public class Vec2 extends Vec3 implements Serializable {
 
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Vec2(double x, double y){
 		super(x, y, 0);
 	}

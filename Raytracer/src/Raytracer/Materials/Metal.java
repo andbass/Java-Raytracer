@@ -10,6 +10,10 @@ import java.io.Serializable;
  */
 public class Metal extends Material implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static final Metal ALUMINIUM = new Metal(new Color(173, 178, 189));
 	public static final Metal BRASS = new Metal(new Color(181, 166, 66));
 	public static final Metal COPPER = new Metal(new Color(184, 115, 51));

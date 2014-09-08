@@ -6,9 +6,17 @@ import java.io.Serializable;
 
 public class Camera implements Serializable  {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Vec3 pos, dir, right, up;
 	private double fovMultipler;
 	private double fov;
+	
+	public Camera(){
+		this(Vec3.ZERO, Vec3.FORWARD, Vec3.UP, 60);
+	}
 	
 	public Camera(Vec3 pos, Vec3 dir, Vec3 up, double fovDegrees){
 		this.pos = pos;  this.dir = dir.normalize();  this.up = up.normalize();

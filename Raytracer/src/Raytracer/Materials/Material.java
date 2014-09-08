@@ -11,6 +11,10 @@ import java.io.Serializable;
 public abstract class Material implements Serializable { // TODO Replace Vec3 paramters with Vec2
 	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static final double DEFAULT_SHININESS 	= 5;
 	public static final double DEFAULT_REFLECTIVITY = 0;
 	

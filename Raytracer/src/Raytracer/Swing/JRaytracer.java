@@ -21,6 +21,11 @@ import java.io.File;
 public class JRaytracer extends JFrame implements KeyListener {
 	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private JFileChooser fc = new JFileChooser();
 	
 	private JRaytracerViewport viewport;

@@ -10,6 +10,10 @@ import java.io.Serializable;
 
 public class Plane extends Geometry implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Vec3 pos, normal;
 	
 	public Plane(Vec3 pos, Vec3 normal, Material mat){

@@ -12,6 +12,10 @@ import java.io.Serializable;
  */
 public class QuadraticEquation implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private boolean solvable;
 	private double a, b, c;
 	private double root1; // if we add the discrimant

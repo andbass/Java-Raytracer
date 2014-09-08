@@ -12,6 +12,10 @@ import java.io.Serializable;
 public class Texture extends Material implements Serializable {
 	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private BufferedImage tex;
 	private Color specular;
 	private double ambientMultipler;

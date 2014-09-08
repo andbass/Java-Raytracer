@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class Color implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static final Color RED = new Color(220, 0, 0);
 	public static final Color GREEN = new Color(0, 220, 0);
 	public static final Color BLUE = new Color(0, 0, 220);

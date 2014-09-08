@@ -37,7 +37,7 @@ public class Phong extends BRDF {
 		
 	private Color getObjectColor(RaycastResult result, Scene scene, Camera cam) {
 		
-		List<Geometry> tempGeomList = new ArrayList<Geometry>(scene.geomList);
+		ArrayList<Geometry> tempGeomList = new ArrayList<Geometry>(scene.geomList);
 		
 		Color pointColor = Color.BLACK;
 

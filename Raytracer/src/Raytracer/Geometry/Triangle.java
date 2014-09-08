@@ -12,6 +12,10 @@ import Raytracer.Math.Vec3;
 public class Triangle extends Geometry implements Serializable {
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Vec3 a, b, c;
 	private Vec3 normal;
 

@@ -14,6 +14,10 @@ import java.awt.image.BufferedImage;
 
 public class JRaytracerViewport extends JComponent {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private BufferedImage image; // the render from the SimpleRenderer
 	private SimpleRenderer renderer;
 

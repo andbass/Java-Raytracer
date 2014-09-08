@@ -11,6 +11,11 @@ import java.io.Serializable;
 public abstract class Geometry implements Serializable {
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Geometry(Material mat){
 		material = mat;
 	}

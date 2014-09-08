@@ -9,6 +9,10 @@ import java.io.Serializable;
 public class DirectionalLight implements Light, Serializable {
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Vec3 dirNeg;
 	private Color ambient, diffuse, specular;
 	
