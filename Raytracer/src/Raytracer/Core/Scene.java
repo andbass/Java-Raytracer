@@ -1,12 +1,12 @@
 package Raytracer.Core;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import Raytracer.Debugging.Debug;
@@ -52,9 +52,21 @@ public class Scene implements Serializable {
 		return lightList;
 	}
 	
+	public void addGeometry(Collection<Geometry> collection){
+		for (Geometry geom : collection){
+			geomList.add(geom);
+		}
+	}
+	
 	public void addGeometry(Geometry...geom){
 		for (Geometry geometry : geom){
 			geomList.add(geometry);
+		}
+	}
+	
+	public void addLight(Collection<Light> collection){
+		for (Light light : collection){
+			lightList.add(light);
 		}
 	}
 	
