@@ -1,6 +1,7 @@
 package Raytracer.Math;
 
 import java.io.Serializable;
+import java.util.Random;
 
 public class Vec3 implements Serializable {
 
@@ -25,7 +26,23 @@ public class Vec3 implements Serializable {
 	 */
 	public static final Vec3 FORWARD	= new Vec3(0,0,1);
 	
+	public static Vec3 random(double max){
+		return Vec3.random(max, max, max);
+	}
+	
+	public static Vec3 random(double maxX, double maxY, double maxZ){
+		Random rand = new Random();
+		double x = maxX * rand.nextDouble();
+		double y = maxY * rand.nextDouble();
+		double z = maxZ * rand.nextDouble();
+		return new Vec3(x, y, z);
+	}
+	
 	public double x, y, z;
+
+	public Vec3() {
+		this(0,0,0);
+	}
 	
 	public Vec3(double x){
 		this(x, x, x);
@@ -74,6 +91,11 @@ public class Vec3 implements Serializable {
 	
 	public Vec3 negate(){
 		return new Vec3(-this.x, -this.y, -this.z);
+	}
+	
+	public Vec3 around(double radius){
+		Vec3 dir = Vec3.random(1, 1, 1).normalize();
+		return this.add(dir.scale(radius));
 	}
 	
 	public double dist(Vec3 vec){

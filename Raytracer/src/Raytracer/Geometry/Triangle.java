@@ -1,12 +1,13 @@
 package Raytracer.Geometry;
 
+import java.io.Serializable;
+
 import Raytracer.Core.Ray;
 import Raytracer.Core.RaycastResult;
+import Raytracer.Debugging.Debug;
 import Raytracer.Materials.Material;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec3;
-
-import java.io.Serializable;
 
 public class Triangle extends Geometry implements Serializable {
 
@@ -31,7 +32,10 @@ public class Triangle extends Geometry implements Serializable {
 	}
 
 	public RaycastResult collide(Ray ray) {
-		return null;
+		double d = a.dot(normal);
+		Debug.write(d);
+		
+		return RaycastResult.FAILURE;
 	}
 
 	public Color getDiffuse(Vec3 point) {

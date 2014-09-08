@@ -47,8 +47,8 @@ public class JRaytracerViewport extends JComponent {
 		image = getWaitImage("Please wait: Now rendering...");
 		this.repaint();
 
-		int height = getHeight();
-		int width = getWidth();
+		int height = image.getHeight();
+		int width = image.getWidth();
 
 		for (int y = 0; y < height; y++) {
 			for (int x = 0; x < width; x++) {
