@@ -29,21 +29,8 @@ public class Program {
 											 1280, 720,	
 											 new Phong(),
 											 new Poseidon(1,0));
-		
-		Scene scene = new Scene("Stars in space");
 		Camera camera = new Camera();
-		
-		Color[] starColors = new Color[]{Color.WHITE, Color.RED, Color.YELLOW, Color.BLUE};
-		List<Geometry> stars = new ArrayList<Geometry>();
-		
-		for (int i = 0; i < 20; i++){
-			Vec3 rand = Vec3.random(10000, 10000, 3000).add(Vec3.FORWARD.scale(10000));
-			Color starColor = starColors[i % starColors.length];
-			Sphere star = new Sphere(rand, 250 * Math.random(), new FlatColor(starColor));
-			stars.add(star);
-		}
-		
-		scene.addGeometry(stars);
+		Scene scene = ExampleScenes.getEarth(200);
 		
 		Debug.LOG.start("Test render");
 		raytracer.render(scene, camera);
