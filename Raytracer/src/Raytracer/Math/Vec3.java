@@ -31,36 +31,16 @@ public class Vec3 implements Serializable {
 	 */
 	public static final Vec3 FORWARD	= new Vec3(0,0,1);
 	
-	public static Vec3 random(double max){
-		return Vec3.random(max, max, max, true);
-	}
-	
-	public static Vec3 random(double max, boolean canBeNegative){
-		return Vec3.random(max, max, max, canBeNegative);
+	public static Vec3 randomXY(double maxX, double maxY){
+		return Vec3.random(maxX, maxY, 0);
 	}
 	
 	public static Vec3 random(double maxX, double maxY, double maxZ){
-		return Vec3.random(maxX, maxY, maxZ, true);
-	}
-	
-	public static Vec3 random(double maxX, double maxY, double maxZ, boolean canBeNegative){
 		Random rand = new Random();
 		
-		double x = maxX * rand.nextDouble();
-		rand.setSeed((long)x ^ 551232131L);
-		double y = maxY * rand.nextDouble();
-		rand.setSeed((long)y ^ 111212121L);
-		double z = maxZ * rand.nextDouble();
-		rand.setSeed((long)z ^ 41313132L);
-		
-		if (canBeNegative){
-			x *= rand.nextInt(1) * 2 - 1;
-			rand.setSeed((long)x ^ 75655L);
-			y *= rand.nextInt(1) * 2 - 1;
-			rand.setSeed((long)y ^ 5534534534L);
-			z *= rand.nextInt(1) * 2 - 1;
-			rand.setSeed((long)z ^ 124017890L);
-		}
+		double x = maxX * rand.nextDouble() * (rand.nextInt(2) * 2 - 1 );
+		double y = maxY * rand.nextDouble() * (rand.nextInt(2) * 2 - 1 );
+		double z = maxZ * rand.nextDouble() * (rand.nextInt(2) * 2 - 1 );
 		return new Vec3(x, y, z);
 	}
 	

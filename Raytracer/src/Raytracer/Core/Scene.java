@@ -58,7 +58,7 @@ public class Scene implements Serializable {
 		return lightList;
 	}
 	
-	public void addGeometry(Collection<Sphere> collection){
+	public void addGeometry(Collection<Geometry> collection){
 		for (Geometry geom : collection){
 			geomList.add(geom);
 		}
