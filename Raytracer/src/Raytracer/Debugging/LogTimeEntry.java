@@ -29,7 +29,7 @@ public class LogTimeEntry extends LogEntry {
 		
 		String sec;
 		if (finished){
-			sec = String.format("%.5g", nano * 1e-9);
+			sec = String.format("%.5g", nano * 1e-9) + "s";
 		} else {
 			sec = "In progress";
 		}

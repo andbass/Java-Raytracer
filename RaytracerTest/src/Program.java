@@ -35,7 +35,11 @@ public class Program {
 		Debug.LOG.start("Test render");
 		raytracer.render(scene, camera);
 		Debug.LOG.end();
-
+		
+		Debug.LOG.start("Saving Scene");
+		scene.save("resources/scenes/" + scene.name + ".scene");
+		Debug.LOG.end();
+		
 	}
 
 }
