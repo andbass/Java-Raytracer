@@ -28,16 +28,12 @@ public class Program {
 		JRaytracer raytracer = new JRaytracer("Raytracer (Alt + Enter to fullscreen)",
 											 1280, 720,	
 											 new Phong(),
-											 new Poseidon(1,0));
+											 new Poseidon(3,0.25));
 		Camera camera = new Camera();
 		Scene scene = ExampleScenes.getEarth(200);
 		
 		Debug.LOG.start("Test render");
 		raytracer.render(scene, camera);
-		Debug.LOG.end();
-		
-		Debug.LOG.start("Saving Scene");
-		scene.save("resources/scenes/" + scene.name + ".scene");
 		Debug.LOG.end();
 		
 	}

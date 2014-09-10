@@ -31,10 +31,6 @@ public class Vec3 implements Serializable {
 	 */
 	public static final Vec3 FORWARD	= new Vec3(0,0,1);
 	
-	public static Vec3 randomXY(double maxX, double maxY){
-		return Vec3.random(maxX, maxY, 0);
-	}
-	
 	public static Vec3 random(double maxX, double maxY, double maxZ){
 		Random rand = new Random();
 		
