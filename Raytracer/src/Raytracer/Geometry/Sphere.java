@@ -16,8 +16,8 @@ public class Sphere extends Geometry implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Vec3 pos;
-	private double radius, radiusSquared;
+	protected Vec3 pos;
+	protected double radius, radiusSquared;
 	
 	public Sphere(Vec3 pos, double radius, Material mat){	
 		super(mat);

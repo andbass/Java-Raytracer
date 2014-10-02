@@ -1,19 +1,12 @@
 package Raytracer.Core;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 import Raytracer.Debugging.Debug;
 import Raytracer.Geometry.Geometry;
-import Raytracer.Geometry.Sphere;
 import Raytracer.Lights.Light;
-import Raytracer.Materials.Material;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class Scene implements Serializable {
 
@@ -26,8 +19,6 @@ public class Scene implements Serializable {
 	
 	public ArrayList<Geometry> 	geomList;
 	public ArrayList<Light>		lightList;
-	
-	private Material		bgMaterial;
 	
 	public Scene(String name){
 		this.name = name;

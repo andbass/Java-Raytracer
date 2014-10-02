@@ -1,17 +1,7 @@
-import java.util.ArrayList;
-import java.util.List;
-
 import Raytracer.BRDFs.Phong;
 import Raytracer.Core.Camera;
 import Raytracer.Core.Scene;
 import Raytracer.Debugging.Debug;
-import Raytracer.Geometry.Geometry;
-import Raytracer.Geometry.Sphere;
-import Raytracer.Lights.PointLight;
-import Raytracer.Materials.FlatColor;
-import Raytracer.Materials.Gradient;
-import Raytracer.Math.Color;
-import Raytracer.Math.Vec3;
 import Raytracer.Sampling.Poseidon;
 import Raytracer.Swing.JLogViewer;
 import Raytracer.Swing.JRaytracer;
@@ -30,7 +20,7 @@ public class Program {
 											 new Phong(),
 											 new Poseidon(3,0.25));
 		Camera camera = new Camera();
-		Scene scene = ExampleScenes.getEarth(200);
+		Scene scene = ExampleScenes.getEarth(0);
 		
 		Debug.LOG.start("Test render");
 		raytracer.render(scene, camera);

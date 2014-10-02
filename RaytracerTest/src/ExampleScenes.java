@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
 import Raytracer.Core.Camera;
 import Raytracer.Core.Scene;
 import Raytracer.Geometry.Geometry;
@@ -10,6 +7,9 @@ import Raytracer.Materials.FlatColor;
 import Raytracer.Materials.Texture;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec3;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ExampleScenes {
 	public static final Scene TWO_SPHERES_PLANE = new Scene("Two spheres and a plane");
@@ -28,8 +28,11 @@ public class ExampleScenes {
 			stars.add(star);
 		}
 		
-		Sphere earth	= new Sphere(new Vec3(0, 0, 400), 125, new Texture("resources/images/earth_day.jpg"));
-		Sphere moon		= new Sphere(new Vec3(-200, 120, 450), 45, new Texture("resources/images/moon.jpg"));
+		Sphere earth	= new Sphere(new Vec3(0, 0, 400), 125,
+				new Texture("/Users/benscholer/Documents/Java/java-raytracer/RaytracerTest/resources/images/earth_day" +
+						".jpg"));
+		Sphere moon		= new Sphere(new Vec3(-200, 120, 450), 45,
+				new Texture("/Users/benscholer/Documents/Java/java-raytracer/RaytracerTest/resources/images/moon.jpg"));
 		
 		scene.addGeometry(stars);
 		scene.addGeometry(earth, moon);
