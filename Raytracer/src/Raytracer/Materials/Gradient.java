@@ -34,7 +34,7 @@ public class Gradient extends Material implements Serializable {
 	}
 
 	public Color getAmbient(Vec3 point) {
-		return null;
+		return Color.BLACK;
 	}
 
 	public Color getDiffuse(Vec3 point) {
@@ -51,6 +51,6 @@ public class Gradient extends Material implements Serializable {
 	}
 
 	public Color getSpecular(Vec3 point) {
-		return null;
+		return Color.WHITE;
 	}
 }

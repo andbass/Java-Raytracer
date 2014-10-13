@@ -17,8 +17,8 @@ public class Dome extends Sphere implements Serializable {
 	}
 
 	public Vec3 getNormal(Vec3 point) {
-		point = point.sub(pos);
-		return point.negate().normalize();
+		System.out.println(super.getNormal(point));
+		return super.getNormal(point).negate();
 	}
 
 

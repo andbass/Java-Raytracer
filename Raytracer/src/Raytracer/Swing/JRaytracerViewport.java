@@ -68,7 +68,7 @@ public class JRaytracerViewport extends JComponent {
 	}
 
 	private BufferedImage getWaitImage(String string) {
-		image = new BufferedImage(resolution.width, resolution.height, BufferedImage.TYPE_INT_RGB);
+		image = new BufferedImage(getPreferredSize().width, getPreferredSize().height, BufferedImage.TYPE_INT_RGB);
 		Graphics g = image.getGraphics();
 		g.setColor(Color.BLACK.toAwtColor());
 		g.fillRect(0, 0, resolution.width, resolution.height);
