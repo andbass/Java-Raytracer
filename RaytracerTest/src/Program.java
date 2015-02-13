@@ -1,7 +1,7 @@
-import Raytracer.BRDFs.Phong;
 import Raytracer.Core.Camera;
 import Raytracer.Core.Scene;
 import Raytracer.Debugging.Debug;
+import Raytracer.LightingModels.Phong;
 import Raytracer.Materials.Gradient;
 import Raytracer.Math.Color;
 import Raytracer.Sampling.Poseidon;
