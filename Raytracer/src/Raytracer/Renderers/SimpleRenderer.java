@@ -4,11 +4,11 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 
-import Raytracer.BRDFs.BRDF;
 import Raytracer.Core.Camera;
 import Raytracer.Core.Ray;
 import Raytracer.Core.RaycastResult;
 import Raytracer.Core.Scene;
+import Raytracer.LightingModels.LightingModel;
 import Raytracer.Math.Color;
 import Raytracer.Math.Vec2;
 import Raytracer.Sampling.Sampler;
@@ -18,7 +18,7 @@ public class SimpleRenderer {
 	private double ratio;
 	
 	private Sampler sampler;
-	private BRDF brdf;
+	private LightingModel brdf;
 	
 	private int threadCount, threadRenderHeight;
 	private int samples, sqrtSamples;
@@ -28,7 +28,7 @@ public class SimpleRenderer {
 	 * number of samples. The number of samples must be a perfect square
 	 * as to properly subdivide a pixel (which we assume to be 1x1 units)
 	 */
-	public SimpleRenderer(Dimension resolution, BRDF brdf, Sampler sampler, int threadCount){
+	public SimpleRenderer(Dimension resolution, LightingModel brdf, Sampler sampler, int threadCount){
 		this.width = resolution.width;  this.height = resolution.height;
 		this.sampler = sampler;
 		this.brdf = brdf;

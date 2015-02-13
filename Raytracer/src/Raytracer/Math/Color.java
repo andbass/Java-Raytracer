@@ -20,12 +20,7 @@ public class Color {
 	public Color(double r, double g, double b){
 		this.r = r;  this.g = g;  this.b = b;
 	}
-	
-	public Color(java.awt.Color color){
-		this.r = color.getRed(); this.g = color.getGreen(); this.b = color.getBlue();
-	}
 
-<<<<<<< HEAD
 	public Color(String hex) {
 		this(Integer.valueOf(hex.substring(1, 3), 16),
 				Integer.valueOf(hex.substring(3, 5), 16),
@@ -50,10 +45,7 @@ public class Color {
 		this.b = color.getBlue();
 	}
 
-	public Color add(Color color) {
-=======
 	public Color add(Color color){
->>>>>>> branch 'master' of https://Glenie@bitbucket.org/Glenie/java-raytracer.git
 		return new Color(this.r + color.r, this.g + color.g, this.b + color.b);
 	}
 	

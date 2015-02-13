@@ -7,9 +7,9 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
 
-import Raytracer.BRDFs.BRDF;
 import Raytracer.Core.Camera;
 import Raytracer.Core.Scene;
+import Raytracer.LightingModels.LightingModel;
 import Raytracer.Math.Color;
 import Raytracer.Renderers.SimpleRenderer;
 import Raytracer.Sampling.Sampler;
@@ -26,9 +26,9 @@ public class JRaytracerViewport extends JComponent {
 		private int threadCount;
 		
 		private Sampler sampler;
-		private BRDF brdf;
+		private LightingModel brdf;
 		
-		public JRaytracerViewport(Dimension res, BRDF brdf, Sampler sampler, int threadCount){
+		public JRaytracerViewport(Dimension res, LightingModel brdf, Sampler sampler, int threadCount){
 			super();
 			this.sampler = sampler;  this.brdf = brdf;  this.threadCount = threadCount;
 			setPreferredSize(res);
